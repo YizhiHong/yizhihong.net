@@ -1,0 +1,19 @@
+{
+  "name": "yizhihong",
+  "version": "1.0.0",
+  "description": "My personel website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YizhiHong/yizhihong.net.git"
+  },
+  "author": "Yizhi Hong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YizhiHong/yizhihong.net/issues"
+  },
+  "homepage": "https://github.com/YizhiHong/yizhihong.net#readme"
+}

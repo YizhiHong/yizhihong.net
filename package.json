@@ -1,22 +1,17 @@
 {
-  "name": "yizhihong",
-  "version": "1.0.0",
-  "description": "My personel website",
-  "main": "index.js",
+  "name": "yizhihong.net",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YizhiHong/yizhihong.net.git"
-  },
-  "author": "Yizhi Hong",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/YizhiHong/yizhihong.net/issues"
-  },
-  "homepage": "https://github.com/YizhiHong/yizhihong.net#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "morgan": "~1.7.0",
+    "pug": "~2.0.0-beta6",
+    "serve-favicon": "~2.3.0"
   }
 }

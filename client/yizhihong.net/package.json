@@ -14,7 +14,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "git-push": "git add . && git commit -m 'update' && git push https://github.com/YizhiHong/yizhihong.net.git master"
   },
   "eslintConfig": {
     "extends": "react-app"

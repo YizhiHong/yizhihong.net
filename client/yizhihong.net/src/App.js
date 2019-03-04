@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Aux from './hoc/hoc';
+import Layout from './components/layout/layout';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Aux>
-          
-        </Aux>
+        <Layout>
+          <h3>Hi, Here is Yizhi. Welcome to my land</h3>
+        </Layout>
       </div>
     );
   }

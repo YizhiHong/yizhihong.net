@@ -1,5 +1,6 @@
 # ignore design
 design/
+.vscode/
 
 # Logs
 logs

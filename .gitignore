@@ -1,6 +1,12 @@
 # ignore design
 design/
-*.vscode/
+
+# ignore vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # Logs
 logs

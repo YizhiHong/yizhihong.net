@@ -1,0 +1,30 @@
+.Navbar {
+  width: 100%;
+  height: 56px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #703b09;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 90;
+}
+
+.Navbar nav {
+  height: 100%;
+}
+
+.Logo{
+  height: 80%;
+}
+.DesktopOnly{
+  display: none;
+}
+@media (min-width: 500px){
+  .DesktopOnly {
+    display: block;
+  }
+}

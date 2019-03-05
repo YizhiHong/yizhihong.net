@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import Aux from '../../hoc/hoc';
+import Aux from '../../hoc/hoc'
+
+import classes from './Layout.css'
+
+import Navbar from '../Navbar/Navbar'
 
 class Layout  extends Component {
     state = {
@@ -9,10 +13,14 @@ class Layout  extends Component {
     render () {
         return (
             <Aux>
-                {this.props.children}
+                <Navbar></Navbar>
+                <div className={classes.content}>
+                    {this.props.children}
+                </div>
             </Aux>
         )
     }
 }
+
 
 export default Layout

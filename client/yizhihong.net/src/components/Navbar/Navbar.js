@@ -2,16 +2,19 @@ import React from 'react'
 
 import classes from './Navbar.css'
 import NavItems from './NavItems/NavItems'
+import DrawerToggle from './SideDrawer/DrawerToggle/DrawerToggle'
+import Logo from '../Logo/Logo'
 
 const Navbar = (props) => {
     return (
         <header className={classes.Navbar}>
+            <DrawerToggle clicked={props.clicked}>menu</DrawerToggle>
             <div className={classes.Logo}>
-                
+                <Logo></Logo>
             </div>
-            <NavItems className={classes.DesktopOnly}>
-                
-            </NavItems>
+            <nav className={classes.DesktopOnly}>
+                <NavItems />
+            </nav>
         </header>
     )
 }

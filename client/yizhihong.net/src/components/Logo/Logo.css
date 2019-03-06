@@ -1,0 +1,23 @@
+.logo {
+  padding: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-image: url("../../assets/img/logox2.png");
+  background-position: -116px -37px;
+  background-size: 220px;
+  background-repeat: no-repeat;
+  width: 105px;
+}
+
+.logo img{
+  height: 100%;
+}
+@media (max-width: 500px) {
+ .SideLogo {
+  background-position: -0px 8px;
+  background-size: 250px;
+  background-repeat: no-repeat;
+  width: 120px;
+ } 
+}

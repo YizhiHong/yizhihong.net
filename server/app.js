@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var graphql = require('express-graphql')
+var graphqlHTTP = require('express-graphql')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -25,6 +25,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+// handles graphql
+app.use('/graphql',graphqlHTTP({
+
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

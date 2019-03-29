@@ -8,9 +8,14 @@ const bodyParser = require('body-parser');
 const applyRouters = require('./routes/main')
 
 const mongoose = require('mongoose')
+const cors = require('cors')
+
 require('custom-env').env()
 
 const app = express();
+
+//allow cross server
+app.use(cors())
 
 mongoose.connect(process.env.DB_CONN, {dbName: 'yizhihong',useNewUrlParser: true}).then(
   () => {

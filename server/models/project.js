@@ -6,6 +6,7 @@ const projectSchema = new Schema({
     date: String,
     techniques: [Schema.ObjectId],
     decs: String,
+    details: [String], 
     link: String
 }) 
 

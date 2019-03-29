@@ -16,7 +16,13 @@ const TechniquesType = new GraphQLObjectType({
     fields: () => ({
         id:{type:GraphQLID},
         name:{type:GraphQLString},
-        img:{type:GraphQLString}
+        img:{type:GraphQLString},
+        projects:{
+            type:new GraphQLList(ProjectsType),
+            resolve(parent,args){
+                return Project.find({"techniques":  parent.id})
+            }
+        }
     })
 })
 
@@ -32,6 +38,7 @@ const ProjectsType = new GraphQLObjectType({
                 return Technique.find({ "_id":  {"$in": parent.techniques}})
             }
         },
+        details: {type: new GraphQLList(GraphQLString)},
         decs:{type:GraphQLString},
         link:{type:GraphQLString}
     })
@@ -57,7 +64,7 @@ const RootQuery = new GraphQLObjectType({
         allProjects:{
             type: new GraphQLList(ProjectsType),
             resolve(parent, args){
-                return Projects.find({})
+                return Project.find({})
             }
         },
         allTechniques:{
@@ -93,6 +100,7 @@ const Mutation = new GraphQLObjectType({
                 date:{type: GraphQLString},
                 techniques: {type: new GraphQLNonNull(new GraphQLList(GraphQLString))},
                 decs: {type: GraphQLString},
+                details: {type: new GraphQLList(GraphQLString)},
                 link: {type: GraphQLString}
             },
             resolve(parent,args) {
@@ -102,6 +110,7 @@ const Mutation = new GraphQLObjectType({
                     date: args.date,
                     techniques: args.techniques,
                     decs: args.decs,
+                    details: args.details,
                     link: args.link
                 })
                 return proj.save()

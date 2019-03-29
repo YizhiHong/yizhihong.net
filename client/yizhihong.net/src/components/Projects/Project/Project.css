@@ -1,0 +1,11 @@
+.techLogo img{
+    max-width: 50px;
+    width: 100%;
+    margin: 10px;
+}
+.tech{
+    display: flex;
+    align-content: flex-start;
+    height: 150px;
+    justify-content: space-around;
+}

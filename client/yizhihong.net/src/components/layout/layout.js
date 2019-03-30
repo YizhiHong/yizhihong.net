@@ -7,6 +7,7 @@ import Navbar from '../Navbar/Navbar'
 import SideDrawer from '../Navbar/SideDrawer/SideDrawer'
 
 class Layout  extends Component {
+    
     state = {
         showSideDraw: false
     }

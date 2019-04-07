@@ -1,6 +1,7 @@
 const graphql = require('graphql');
 const Project = require('./project');
 const Technique = require('./technique');
+const Experience = require('./experience');
 
 const {
     GraphQLObjectType, 

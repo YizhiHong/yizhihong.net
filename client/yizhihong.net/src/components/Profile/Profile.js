@@ -2,13 +2,9 @@ import React, {Component} from 'react'
 import LinkedIn from '../SoicalMedia/LinkedIn'
 
 import {Container,Row,Col} from 'react-bootstrap'
-import ScriptLoader from '../../hoc/ScriptLoader'
-import APIProvider from '../API/APIProvider'
 import Projects from '../Projects/Projects'
 
-
-const scripts = [{"type":"CSS",
-                "url":"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}]
+import APIProvider from '../API/APIProvider'
 
 
 class Profile extends Component{
@@ -24,12 +20,10 @@ class Profile extends Component{
                             <LinkedIn />
                         </Col>
                     </Row>
-                    
                 </Container>
             </APIProvider>
         )
     }
-
 }
 
-export default ScriptLoader(Profile,scripts)
+export default Profile;

@@ -16,24 +16,31 @@ const ScriptLoader = (WrappedComponent,scripts) => {
             super()
             this.src = null
         }
+
+        state = {
+            scriptLoaded: false,
+            scriptError: false
+        }
+
         componentWillMount() {
             this.src = scripts.map((script,index) => {
                 switch (script.type) {
                     case "CSS":
-                        return (<link key={script.url+index} 
+                        return (<link key={script.url+"_"+index} 
                         rel="stylesheet" 
                         href={script.url} async defer />)
                     default:
                         return (<Script
-                            key={script.url + index}
+                            key={script.url+"_"+index}
                             url={script.url}
-                            onCreate={this.handleScriptCreate.bind(this)}
-                            onError={this.handleScriptError.bind(this)}
-                            onLoad={this.handleScriptLoad.bind(this)}
+                            // onCreate={this.handleScriptCreate.bind(this)}
+                            // onError={this.handleScriptError.bind(this)}
+                            // onLoad={this.handleScriptLoad.bind(this)}
                         />)
                 }
             })
         }
+
         handleScriptCreate() {
             this.setState({ scriptLoaded: false })
         }
@@ -47,6 +54,7 @@ const ScriptLoader = (WrappedComponent,scripts) => {
         }
 
         render() {
+            console.log(this.src[0])
             return (
                 <Aux>
                     {this.src.map(el=>el)}

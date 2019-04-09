@@ -5,6 +5,7 @@ import NavItems from './NavItems/NavItems'
 import DrawerToggle from './SideDrawer/DrawerToggle/DrawerToggle'
 import Logo from '../Logo/Logo'
 
+
 const Navbar = (props) => {
     return (
         <header className={classes.Navbar}>
@@ -13,7 +14,7 @@ const Navbar = (props) => {
                 <Logo></Logo>
             </div>
             <nav className={classes.DesktopOnly}>
-                <NavItems />
+                <NavItems items={props.menu}/>
             </nav>
         </header>
     )

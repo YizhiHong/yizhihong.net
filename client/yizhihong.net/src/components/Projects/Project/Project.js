@@ -3,7 +3,6 @@ import Classes from './Project.css'
 
 const project = (props) => {
     let proj = props.proj
-    console.log(proj)
     return (
         <li>
             <h4>{proj.name}</h4>

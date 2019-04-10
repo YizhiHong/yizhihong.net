@@ -1,20 +1,26 @@
-import React from 'react'
+import React,{lazy,Suspense} from 'react'
 import {Route,Switch} from 'react-router-dom'
+import Loader from '../UI/Loader/Loader'
 
-import ScriptLoader from '../../hoc/ScriptLoader'
-import Profile from '../Profile/Profile'
-import Projects from '../Projects/Projects'
-
-const scripts = [{"type":"CSS",
-                "url":"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}]
-
+const Profile = lazy(() => import('../Profile/Profile'))
+const Projects = lazy(() => import('../Projects/Projects'))
 
 const Routers = (props) =>{
     return (
         <Switch>
-            <Route path='/' exact component={Profile} />
-            <Route path='/Project' exact component={Projects} />
+            <Route path='/' exact render={() => 
+                <Suspense fallback={<Loader></Loader>}>
+                    <Profile />
+                </Suspense>} 
+            />
+
+            <Route path='/Project' exact render={() => 
+                <Suspense fallback={<Loader></Loader>}>
+                    <Projects />
+                </Suspense>} 
+            />
+            {/* <Route path='/Contact' exact component={Projects} /> */}
         </Switch>
     )
 }
-export default ScriptLoader(Routers,scripts);
+export default Routers;

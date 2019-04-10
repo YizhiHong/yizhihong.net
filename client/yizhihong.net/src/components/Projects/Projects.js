@@ -19,11 +19,9 @@ class Projects extends Component{
 
     render(){
         return (
-            <div>
-                <ul className={Classes.projectList}>
-                    {this.displayProjects()}
-                </ul>
-            </div>
+            <ul className={Classes.projectList}>
+                {this.displayProjects()}
+            </ul>
         )
     }
 }

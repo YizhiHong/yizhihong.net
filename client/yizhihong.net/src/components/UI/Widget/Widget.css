@@ -1,0 +1,6 @@
+.widget {
+    width: 100%;
+    background-color: white;
+    box-shadow: 1 1 1 grey;
+    padding: 10px;
+}

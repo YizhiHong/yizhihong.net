@@ -20,7 +20,9 @@ class Profile extends Component{
                             </Widget>
                         </Col>
                         <Col xs={12} md={4}>
-                            <LinkedIn />
+                            <Widget>
+                                <LinkedIn />
+                            </Widget>
                         </Col>
                     </Row>
                 </Container>

@@ -15,8 +15,8 @@ const LinkedIn = (props) => {
             data-vanity="chi-hong">
             <a className="LI-simple-link" 
                 href='https://www.linkedin.com/in/chi-hong?trk=profile-badge'>
-                </a>
-            </div>
+            </a>
+        </div>
     )    
 }
 

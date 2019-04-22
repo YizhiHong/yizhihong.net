@@ -21,7 +21,7 @@ const ScriptLoader = (WrappedComponent,scripts) => {
             scriptLoaded: false,
             scriptError: false
         }
-
+        
         componentWillMount() {
             this.src = scripts.map((script,index) => {
                 switch (script.type) {
@@ -33,9 +33,9 @@ const ScriptLoader = (WrappedComponent,scripts) => {
                         return (<Script
                             key={script.url+"_"+index}
                             url={script.url}
-                            // onCreate={this.handleScriptCreate.bind(this)}
-                            // onError={this.handleScriptError.bind(this)}
-                            // onLoad={this.handleScriptLoad.bind(this)}
+                            onCreate={this.handleScriptCreate.bind(this)}
+                            onError={this.handleScriptError.bind(this)}
+                            onLoad={this.handleScriptLoad.bind(this)}
                         />)
                 }
             })
@@ -54,7 +54,6 @@ const ScriptLoader = (WrappedComponent,scripts) => {
         }
 
         render() {
-            console.log(this.src[0])
             return (
                 <Aux>
                     {this.src.map(el=>el)}

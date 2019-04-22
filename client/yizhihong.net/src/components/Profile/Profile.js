@@ -9,6 +9,15 @@ import APIProvider from '../API/APIProvider'
 
 
 class Profile extends Component{
+    state = {
+        social: false
+    }
+    componentDidMount(){
+        this.setState({social: true})
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return true;
+    }
     render(){
         return (
             <APIProvider>
@@ -21,7 +30,7 @@ class Profile extends Component{
                         </Col>
                         <Col xs={12} md={4}>
                             <Widget>
-                                <LinkedIn />
+                                {this.state.social ? <LinkedIn /> : null}
                             </Widget>
                         </Col>
                     </Row>

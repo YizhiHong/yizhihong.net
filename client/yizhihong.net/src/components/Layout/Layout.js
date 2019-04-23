@@ -11,9 +11,9 @@ const scripts = [{"type":"CSS",
                 "url":"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"}]
 
 const Menu = [
-    {"name": "Profile", "link":"/"},
-    {"name": "Projects", "link":"/projects"},
-    {"name": "Contact", "link":"/contact"}
+    {"name": "PROFILE", "link":"/"},
+    {"name": "PROJECTS", "link":"/projects"},
+    {"name": "CONTACT", "link":"/contact"}
 ]
 
 class Layout  extends Component {

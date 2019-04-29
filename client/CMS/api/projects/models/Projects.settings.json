@@ -1,0 +1,33 @@
+{
+  "connection": "default",
+  "collectionName": "projects",
+  "info": {
+    "name": "projects",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "decs": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "techniques": {
+      "collection": "techniques",
+      "via": "projs",
+      "dominant": true
+    },
+    "details": {
+      "type": "json"
+    }
+  }
+}

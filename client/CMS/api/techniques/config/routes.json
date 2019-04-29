@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/techniques",
+      "handler": "Techniques.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/techniques/count",
+      "handler": "Techniques.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/techniques/:_id",
+      "handler": "Techniques.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/techniques",
+      "handler": "Techniques.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/techniques/:_id",
+      "handler": "Techniques.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/techniques/:_id",
+      "handler": "Techniques.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

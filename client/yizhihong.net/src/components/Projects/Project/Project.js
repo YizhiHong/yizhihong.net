@@ -27,7 +27,7 @@ const project = (props) => {
                     )
                 })}
             </div>
-            {proj.link === 'null' ? null :  <a href={proj.link} rel="noopener noreferrer" target="_blank">Ask Idea web</a>}
+            {proj.link === "" ? null :  <a href={proj.link} rel="noopener noreferrer" target="_blank">{proj.name}</a>}
         </li>
     )
 }

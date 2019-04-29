@@ -1,0 +1,14 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-mongoose",
+      "settings": {
+        "client": "mongo",
+        "database": "yizhihong",
+        "uri": "mongodb://yhong25:yRw0gg2XbcYsoI6q@hyz1991-shard-00-00-t7vdz.mongodb.net:27017,hyz1991-shard-00-01-t7vdz.mongodb.net:27017,hyz1991-shard-00-02-t7vdz.mongodb.net:27017/test?ssl=true&replicaSet=hyz1991-shard-0&authSource=admin&retryWrites=true"
+      },
+      "options": {}
+    }
+  }
+}

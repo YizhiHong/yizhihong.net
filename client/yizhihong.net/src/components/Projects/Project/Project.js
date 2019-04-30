@@ -1,5 +1,6 @@
 import React from 'react'
 import Classes from './Project.css'
+import {timeParser} from '../../../hoc/utils'
 
 const project = (props) => {
     let proj = props.proj
@@ -7,7 +8,7 @@ const project = (props) => {
     return (
         <li>
             <h4>{proj.name}</h4>
-            <h5>{proj.date}</h5>
+            <h5>{timeParser(proj.date)}</h5>
             <p>{proj.decs}</p>
             <ul className="">
                 {proj.details.map((detail)=> {

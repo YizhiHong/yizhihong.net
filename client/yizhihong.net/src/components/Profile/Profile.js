@@ -5,7 +5,7 @@ import {Container,Row,Col} from 'react-bootstrap'
 import Projects from '../Projects/Projects'
 import Widget from '../UI/Widget/Widget'
 
-import APIProvider from '../API/APIProvider'
+import APIProvider from '../../API/APIProvider'
 
 
 class Profile extends Component{

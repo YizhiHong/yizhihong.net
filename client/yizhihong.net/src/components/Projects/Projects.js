@@ -3,10 +3,11 @@ import {graphql} from 'react-apollo'
 import Project from './Project/Project'
 
 import Classes from './Projects.css'
-import {allProjectsQuery} from '../API/projectAPI' 
+import {allProjectsQuery} from '../../API/projectAPI' 
 
 class Projects extends Component{
     displayProjects(){
+        console.log(this.props.allProjects)
         if(this.props.data.loading){
             return <div>loading...</div>
         }else{

@@ -9,6 +9,7 @@ const {
     GraphQLString, 
     GraphQLSchema,
     GraphQLList,
+    GraphQLInputObjectType,
     GraphQLNonNull
 } = graphql
 
@@ -39,7 +40,16 @@ const ProjectsType = new GraphQLObjectType({
                 return Technique.find({ "_id":  {"$in": parent.techniques}})
             }
         },
-        details: {type: new GraphQLList(GraphQLString)},
+        details: {
+            type: new GraphQLList(GraphQLString),
+            resolve(parent,arg) {
+                let d = []
+                for(let detail of Object.values(parent.details)){
+                    d.push(detail)
+                }
+                return d
+            }
+        },
         decs:{type:GraphQLString},
         link:{type:GraphQLString}
     })

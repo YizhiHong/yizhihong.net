@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "start": "concurrently \"cd server && node ./bin/www\"  \"cd ./client/CMS && strapi start\"  \"cd ./client/yizhihong.net/ && node scripts/start.js\" ",
+        "build": "node scripts/build.js",
+        "test": "node scripts/test.js",
+        "git-push": "git add . && git commit -m 'update' && git push https://github.com/YizhiHong/yizhihong.net.git master"
+    },
+    "devDependencies": {
+        "concurrently": "^3.5.0"
+    }
+}

@@ -24,7 +24,7 @@ mongoose.connect(process.env.DB_CONN, {dbName: 'yizhihong',useNewUrlParser: true
   err => {
     console.log("Error connecting Database instance due to: ", err);
   }
- );;
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

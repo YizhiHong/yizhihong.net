@@ -6,7 +6,7 @@ const experienceSchema = new Schema({
     date: String,
     Projects: [Schema.ObjectId],
     decs: String,
-    details: [String]
+    details: Object
 }) 
 
 module.exports = mongoose.model('experience',experienceSchema)

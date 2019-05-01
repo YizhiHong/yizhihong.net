@@ -5,8 +5,12 @@ const scripts = [{"type":"JS",
 "url":"https://platform.linkedin.com/badges/js/profile.js"}]
 
 const LinkedIn = (props) => {
+    const LinkedInStyle = {
+        textAlign: 'center'
+    };
     return (
-        <div className="LI-profile-badge"  
+        <div className="LI-profile-badge"
+            style={LinkedInStyle}
             data-version="v1" 
             data-size="medium" 
             data-locale="en_US" 

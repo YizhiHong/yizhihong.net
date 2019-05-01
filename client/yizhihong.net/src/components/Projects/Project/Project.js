@@ -1,14 +1,14 @@
 import React from 'react'
 import Classes from './Project.css'
-import {timeParser} from '../../../hoc/utils'
+import {withTimeParser} from '../../../hoc/utils'
 
 const project = (props) => {
     let proj = props.proj
     console.log(proj)
     return (
-        <li>
+        <pre><code>
             <h4>{proj.name}</h4>
-            <h5>{timeParser(proj.date)}</h5>
+            <h5>{withTimeParser(proj.date)}</h5>
             <p>{proj.decs}</p>
             <ul className="">
                 {proj.details.map((detail)=> {
@@ -29,8 +29,8 @@ const project = (props) => {
                     )
                 })}
             </div>
-            {proj.link === "" ? null :  <a href={proj.link} rel="noopener noreferrer" target="_blank">{proj.name}</a>}
-        </li>
+            {proj.link ?  <a href={proj.link} rel="noopener noreferrer" target="_blank">{proj.name}</a> : null}
+            </code></pre>
     )
 }
 

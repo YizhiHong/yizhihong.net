@@ -1,0 +1,16 @@
+{
+  "connection": "default",
+  "collectionName": "introduction",
+  "info": {
+    "name": "introduction",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "intro": {
+      "type": "text"
+    }
+  }
+}

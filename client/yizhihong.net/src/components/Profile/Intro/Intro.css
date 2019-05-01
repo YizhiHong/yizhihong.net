@@ -1,0 +1,22 @@
+.pre{
+    display: block;
+    overflow-y: scroll;
+
+    font-family : monospace;
+    font-weight : 400;
+    text-align  : left;
+    line-height : 1.6em;
+    white-space : pre;
+    
+    padding       : 1em 2%;
+    margin-top    : 1em;
+    margin-right  : 5%;
+    margin-bottom : 1em;
+    margin-left   : 5%;
+    
+    /* border-left: solid 2px red;  */
+    border-radius : 0.25em;
+    
+    background-color : #202020;
+    color: rgba(155, 220, 100, 1);
+}

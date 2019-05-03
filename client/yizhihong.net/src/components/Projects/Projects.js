@@ -4,13 +4,15 @@ import Project from './Project/Project'
 
 import Classes from './Projects.css'
 import {allProjectsQuery} from '../../API/projectAPI' 
+import Loader from '../UI/Loader/Loader'
+import {withDateSorter} from '../../hoc/utils'
 
 class Projects extends Component{
     displayProjects(){
-        console.log(this.props.allProjects)
         if(this.props.data.loading){
-            return <div>loading...</div>
+            return <Loader size="5px"></Loader>
         }else{
+            withDateSorter(this.props.data.allProjects)
             return (
                 this.props.data.allProjects.map((project)=>
                     <Project key={project.id} proj={project}></Project>)

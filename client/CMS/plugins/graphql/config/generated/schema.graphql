@@ -1,3 +1,11 @@
+input createExperiencesInput {
+  data: ExperiencesInput
+}
+
+type createExperiencesPayload {
+  experience: Experiences
+}
+
 input createIntroductionInput {
   data: IntroductionInput
 }
@@ -43,6 +51,14 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteExperiencesInput {
+  where: InputID
+}
+
+type deleteExperiencesPayload {
+  experience: Experiences
+}
+
 input deleteIntroductionInput {
   where: InputID
 }
@@ -83,6 +99,18 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+input editExperiencesInput {
+  name: String
+  location: String
+  title: String
+  startDate: DateTime
+  endDate: DateTime
+  currentWork: Boolean
+  details: JSON
+  projects: [ID]
+  type: ENUM_EXPERIENCES_TYPE
+}
+
 input editFileInput {
   name: String
   hash: String
@@ -107,6 +135,8 @@ input editProjectsInput {
   date: DateTime
   techniques: [ID]
   details: JSON
+  location: String
+  experience: ID
 }
 
 input editRoleInput {
@@ -132,6 +162,126 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+}
+
+enum ENUM_EXPERIENCES_TYPE {
+  Education
+  Experience
+  Others
+}
+
+type Experiences {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  location: String!
+  title: String
+  startDate: DateTime!
+  endDate: DateTime
+  currentWork: Boolean!
+  details: JSON
+  type: ENUM_EXPERIENCES_TYPE!
+  projects(sort: String, limit: Int, start: Int, where: JSON): [Projects]
+}
+
+type ExperiencesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ExperiencesConnection {
+  values: [Experiences]
+  groupBy: ExperiencesGroupBy
+  aggregate: ExperiencesAggregator
+}
+
+type ExperiencesConnection_id {
+  key: ID
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionCreatedAt {
+  key: DateTime
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionCurrentWork {
+  key: Boolean
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionDetails {
+  key: JSON
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionEndDate {
+  key: DateTime
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionId {
+  key: ID
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionLocation {
+  key: String
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionName {
+  key: String
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionStartDate {
+  key: DateTime
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionTitle {
+  key: String
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionType {
+  key: String
+  connection: ExperiencesConnection
+}
+
+type ExperiencesConnectionUpdatedAt {
+  key: DateTime
+  connection: ExperiencesConnection
+}
+
+type ExperiencesGroupBy {
+  _id: [ExperiencesConnection_id]
+  id: [ExperiencesConnectionId]
+  createdAt: [ExperiencesConnectionCreatedAt]
+  updatedAt: [ExperiencesConnectionUpdatedAt]
+  name: [ExperiencesConnectionName]
+  location: [ExperiencesConnectionLocation]
+  title: [ExperiencesConnectionTitle]
+  startDate: [ExperiencesConnectionStartDate]
+  endDate: [ExperiencesConnectionEndDate]
+  currentWork: [ExperiencesConnectionCurrentWork]
+  details: [ExperiencesConnectionDetails]
+  type: [ExperiencesConnectionType]
+}
+
+input ExperiencesInput {
+  name: String!
+  location: String!
+  title: String
+  startDate: DateTime!
+  endDate: DateTime
+  currentWork: Boolean!
+  details: JSON
+  projects: [ID]
+  type: ENUM_EXPERIENCES_TYPE!
 }
 
 input FileInput {
@@ -215,9 +365,12 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Introduction | createIntroductionPayload | updateIntroductionPayload | deleteIntroductionPayload | IntroductionConnection | IntroductionAggregator | IntroductionGroupBy | IntroductionConnection_id | IntroductionConnectionId | IntroductionConnectionCreatedAt | IntroductionConnectionUpdatedAt | IntroductionConnectionIntro | Techniques | createTechniquesPayload | updateTechniquesPayload | deleteTechniquesPayload | TechniquesConnection | TechniquesAggregator | TechniquesGroupBy | TechniquesConnection_id | TechniquesConnectionId | TechniquesConnectionCreatedAt | TechniquesConnectionUpdatedAt | TechniquesConnectionName | TechniquesConnectionImg | Projects | createProjectsPayload | updateProjectsPayload | deleteProjectsPayload | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnection_id | ProjectsConnectionId | ProjectsConnectionCreatedAt | ProjectsConnectionUpdatedAt | ProjectsConnectionName | ProjectsConnectionDecs | ProjectsConnectionLink | ProjectsConnectionDate | ProjectsConnectionDetails | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Experiences | createExperiencesPayload | updateExperiencesPayload | deleteExperiencesPayload | ExperiencesConnection | ExperiencesAggregator | ExperiencesGroupBy | ExperiencesConnection_id | ExperiencesConnectionId | ExperiencesConnectionCreatedAt | ExperiencesConnectionUpdatedAt | ExperiencesConnectionName | ExperiencesConnectionLocation | ExperiencesConnectionTitle | ExperiencesConnectionStartDate | ExperiencesConnectionEndDate | ExperiencesConnectionCurrentWork | ExperiencesConnectionDetails | ExperiencesConnectionType | Introduction | createIntroductionPayload | updateIntroductionPayload | deleteIntroductionPayload | IntroductionConnection | IntroductionAggregator | IntroductionGroupBy | IntroductionConnection_id | IntroductionConnectionId | IntroductionConnectionCreatedAt | IntroductionConnectionUpdatedAt | IntroductionConnectionIntro | Techniques | createTechniquesPayload | updateTechniquesPayload | deleteTechniquesPayload | TechniquesConnection | TechniquesAggregator | TechniquesGroupBy | TechniquesConnection_id | TechniquesConnectionId | TechniquesConnectionCreatedAt | TechniquesConnectionUpdatedAt | TechniquesConnectionName | TechniquesConnectionImg | Projects | createProjectsPayload | updateProjectsPayload | deleteProjectsPayload | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnection_id | ProjectsConnectionId | ProjectsConnectionCreatedAt | ProjectsConnectionUpdatedAt | ProjectsConnectionName | ProjectsConnectionDecs | ProjectsConnectionLink | ProjectsConnectionDate | ProjectsConnectionDetails | ProjectsConnectionLocation | ProjectsConnectionExperience | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createExperiences(input: createExperiencesInput): createExperiencesPayload
+  updateExperiences(input: updateExperiencesInput): updateExperiencesPayload
+  deleteExperiences(input: deleteExperiencesInput): deleteExperiencesPayload
   createIntroduction(input: createIntroductionInput): createIntroductionPayload
   updateIntroduction(input: updateIntroductionInput): updateIntroductionPayload
   deleteIntroduction(input: deleteIntroductionInput): deleteIntroductionPayload
@@ -258,6 +411,8 @@ type Projects {
   link: String
   date: DateTime
   details: JSON
+  location: String
+  experience: Experiences
   techniques(sort: String, limit: Int, start: Int, where: JSON): [Techniques]
 }
 
@@ -297,12 +452,22 @@ type ProjectsConnectionDetails {
   connection: ProjectsConnection
 }
 
+type ProjectsConnectionExperience {
+  key: ID
+  connection: ProjectsConnection
+}
+
 type ProjectsConnectionId {
   key: ID
   connection: ProjectsConnection
 }
 
 type ProjectsConnectionLink {
+  key: String
+  connection: ProjectsConnection
+}
+
+type ProjectsConnectionLocation {
   key: String
   connection: ProjectsConnection
 }
@@ -327,6 +492,8 @@ type ProjectsGroupBy {
   link: [ProjectsConnectionLink]
   date: [ProjectsConnectionDate]
   details: [ProjectsConnectionDetails]
+  location: [ProjectsConnectionLocation]
+  experience: [ProjectsConnectionExperience]
 }
 
 input ProjectsInput {
@@ -336,9 +503,14 @@ input ProjectsInput {
   date: DateTime
   techniques: [ID]
   details: JSON
+  location: String
+  experience: ID
 }
 
 type Query {
+  experience(id: ID!): Experiences
+  experiences(sort: String, limit: Int, start: Int, where: JSON): [Experiences]
+  experiencesConnection(sort: String, limit: Int, start: Int, where: JSON): ExperiencesConnection
   introduction(id: ID!): Introduction
   introductions(sort: String, limit: Int, start: Int, where: JSON): [Introduction]
   introductionsConnection(sort: String, limit: Int, start: Int, where: JSON): IntroductionConnection
@@ -435,6 +607,15 @@ input TechniquesInput {
   name: String
   img: String
   projs: [ID]
+}
+
+input updateExperiencesInput {
+  where: InputID
+  data: editExperiencesInput
+}
+
+type updateExperiencesPayload {
+  experience: Experiences
 }
 
 input updateIntroductionInput {

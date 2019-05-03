@@ -28,6 +28,14 @@
     },
     "details": {
       "type": "json"
+    },
+    "location": {
+      "default": "location",
+      "type": "string"
+    },
+    "experience": {
+      "model": "experiences",
+      "via": "projects"
     }
   }
 }

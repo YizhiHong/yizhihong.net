@@ -5,7 +5,6 @@ import Aux from './hoc';
 /**
  * @param {Object} WrappedComponent
  * @param {Array} scripts
- * @param {Boolean} CSS
  * 
  * @return {Object}
  */

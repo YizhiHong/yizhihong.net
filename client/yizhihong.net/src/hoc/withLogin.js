@@ -1,20 +1,27 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
+import {HOST, USER, PASSWORD} from '../config/config'
 import Loader from '../components/UI/Loader/Loader'
+
+/**
+ * @param {Object} WrappedComponent
+ * 
+ * @return {Object}
+ */
 
 const withLogin = (WrappedComponent) => {
     return class extends Component{
         state = {
             token: null,
-            uri : 'http://localhost:1337/'
+            uri : HOST
         }
 
         componentWillMount() {
             axios
-            .post('http://localhost:1337/auth/local', {
-                identifier: 'test',
-                password: '87774166'
+            .post(`${HOST}auth/local`, {
+                identifier: USER,
+                password: PASSWORD
             })
             .then(response => {
                 // Handle success.

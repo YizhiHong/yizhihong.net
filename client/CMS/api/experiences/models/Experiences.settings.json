@@ -1,0 +1,52 @@
+{
+  "connection": "default",
+  "collectionName": "experiences",
+  "info": {
+    "name": "experiences",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "currentWork": {
+      "type": "boolean",
+      "required": true
+    },
+    "details": {
+      "type": "json"
+    },
+    "projects": {
+      "collection": "projects",
+      "via": "experience"
+    },
+    "type": {
+      "default": "Experience",
+      "enum": [
+        "Education",
+        "Experience",
+        "Others"
+      ],
+      "required": true,
+      "type": "enumeration"
+    }
+  }
+}

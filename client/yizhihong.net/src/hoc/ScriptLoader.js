@@ -20,6 +20,10 @@ const ScriptLoader = (WrappedComponent,scripts) => {
             scriptLoaded: false,
             scriptError: false
         }
+
+        shouldComponentUpdate(){
+            return true
+        }
         
         componentWillMount() {
             this.src = scripts.map((script,index) => {
@@ -35,6 +39,7 @@ const ScriptLoader = (WrappedComponent,scripts) => {
                             onCreate={this.handleScriptCreate.bind(this)}
                             onError={this.handleScriptError.bind(this)}
                             onLoad={this.handleScriptLoad.bind(this)}
+                            async defer
                         />)
                 }
             })

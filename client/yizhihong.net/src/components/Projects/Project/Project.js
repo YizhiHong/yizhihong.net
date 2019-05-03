@@ -1,12 +1,13 @@
 import React from 'react'
 import Classes from './Project.css'
 import {withTimeParser} from '../../../hoc/utils'
+import Widget from '../../UI/Widget/Widget'
 
 const project = (props) => {
     let proj = props.proj
     console.log(proj)
     return (
-        <pre><code>
+        <Widget>
             <h4>{proj.name}</h4>
             <h5>{withTimeParser(proj.date)}</h5>
             <p>{proj.decs}</p>
@@ -30,7 +31,7 @@ const project = (props) => {
                 })}
             </div>
             {proj.link ?  <a href={proj.link} rel="noopener noreferrer" target="_blank">{proj.name}</a> : null}
-            </code></pre>
+        </Widget>
     )
 }
 

@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import React, {Component,Fragment} from 'react'
 import LinkedIn from '../SoicalMedia/LinkedIn'
 
-import {Container,Row,Col} from 'react-bootstrap'
-import Projects from '../Projects/Projects'
+import {Col} from 'react-bootstrap'
+// import Projects from '../Projects/Projects'
 import Widget from '../UI/Widget/Widget'
 import Intro from './Intro/Intro'
-import APIProvider from '../../API/APIProvider'
+
 import withLogin from '../../hoc/withLogin'
 import axios from 'axios'
 
@@ -42,23 +42,19 @@ class Profile extends Component{
     }
     render(){
         return (
-            <APIProvider>
-                <Container>
-                    <Row>
-                        <Col xs={12} md={8}>
-                            <Intro intro={this.state.information}/>
-                            <Widget>
-                                <Projects />
-                            </Widget>
-                        </Col>
-                        <Col xs={12} md={4}>
-                            <Widget>
-                                {this.state.social ? <LinkedIn /> : null}
-                            </Widget>
-                        </Col>
-                    </Row>
-                </Container>
-            </APIProvider>
+            <Fragment>
+                <Col xs={12} md={8}>
+                    <Intro intro={this.state.information}/>
+                    {/* <Widget>
+                        <Projects />
+                    </Widget> */}
+                </Col>
+                <Col xs={12} md={4}>
+                    <Widget>
+                        {this.state.social ? <LinkedIn /> : null}
+                    </Widget>
+                </Col>
+            </Fragment>
         )
     }
 }

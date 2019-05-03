@@ -35,7 +35,7 @@ class Layout  extends Component {
         return (
             <BrowserRouter>
                 <Navbar menu={Menu} 
-                        clicked={this.toggleSideDrawer}></Navbar>
+                    clicked={this.toggleSideDrawer}></Navbar>
                 <SideDrawer 
                     menu= {Menu}
                     closed={this.sideDrawerCloseHandler} 

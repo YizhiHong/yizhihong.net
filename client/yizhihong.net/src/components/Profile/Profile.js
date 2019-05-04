@@ -1,8 +1,8 @@
 import React, {Component,Fragment} from 'react'
+
 import LinkedIn from '../SoicalMedia/LinkedIn'
 
 import {Col} from 'react-bootstrap'
-// import Projects from '../Projects/Projects'
 import Widget from '../UI/Widget/Widget'
 import Intro from './Intro/Intro'
 
@@ -45,9 +45,6 @@ class Profile extends Component{
             <Fragment>
                 <Col xs={12} md={8}>
                     <Intro intro={this.state.information}/>
-                    {/* <Widget>
-                        <Projects />
-                    </Widget> */}
                 </Col>
                 <Col xs={12} md={4}>
                     <Widget>

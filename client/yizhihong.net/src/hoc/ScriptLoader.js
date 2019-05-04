@@ -1,6 +1,5 @@
-import React,{ Component } from 'react'
+import React,{ Component , Fragment} from 'react'
 import Script from 'react-load-script'
-import Aux from './hoc';
 
 /**
  * @param {Object} WrappedComponent
@@ -59,11 +58,11 @@ const ScriptLoader = (WrappedComponent,scripts) => {
 
         render() {
             return (
-                <Aux>
+                <Fragment>
                     {this.src.map(el=>el)}
                     <WrappedComponent
                         {...this.props}/>
-                </Aux>
+                </Fragment>
             )
         }
     };

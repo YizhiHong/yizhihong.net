@@ -1,4 +1,5 @@
 const graphql = require('graphql');
+
 const Project = require('./project');
 const Technique = require('./technique');
 const Experience = require('./experience');
@@ -9,9 +10,17 @@ const {
     GraphQLString, 
     GraphQLSchema,
     GraphQLList,
-    GraphQLInputObjectType,
+    GraphQLBoolean,
     GraphQLNonNull
 } = graphql
+
+/**
+ * 
+ * Define the GraphQL type
+ * @param 
+ * @output 
+ * 
+ */
 
 const TechniquesType = new GraphQLObjectType({
     name:'Technique',
@@ -55,6 +64,35 @@ const ProjectsType = new GraphQLObjectType({
     })
 })
 
+const ExperiencesType = new GraphQLObjectType({
+    name:'Experience',
+    fields: () => ({
+        id:{type:GraphQLID},
+        name:{type:GraphQLString},
+        location:{type:GraphQLString},
+        title:{type:GraphQLString},
+        startDate:{type:GraphQLString},
+        endDate:{type:GraphQLString},
+        currentWork: {type: GraphQLBoolean},
+        type: {type: GraphQLString},
+        projects:{
+            type: new GraphQLList(ProjectsType),
+            resolve(parent,args){
+                return Project.find({ "_id":  {"$in": parent.projects}})
+            }
+        }
+    })
+})
+
+
+/**
+ * 
+ * Define the GraphQL Query set
+ * @param 
+ * @output 
+ * 
+ */
+
 const RootQuery = new GraphQLObjectType({
     name:'RootQuery',
     fields: () => ({
@@ -72,6 +110,13 @@ const RootQuery = new GraphQLObjectType({
                 return Project.findById(args.id)
             }
         },
+        experience:{
+            type: ExperiencesType,
+            args: {id:{type:GraphQLID}},
+            resolve(parent, args){
+                return Experience.findById(args.id)
+            }
+        },
         allProjects:{
             type: new GraphQLList(ProjectsType),
             resolve(parent, args){
@@ -82,6 +127,12 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(TechniquesType),
             resolve(parent, args){
                 return Technique.find({})
+            }
+        },
+        allExperiences:{
+            type: new GraphQLList(ExperiencesType),
+            resolve(parent, args){
+                return Experience.find({})
             }
         }
     })
@@ -115,7 +166,6 @@ const Mutation = new GraphQLObjectType({
                 link: {type: GraphQLString}
             },
             resolve(parent,args) {
-                // let techniques = Technique.find({ id: args.techniquesId})
                 let proj = new Project({
                     name: args.name,
                     date: args.date,

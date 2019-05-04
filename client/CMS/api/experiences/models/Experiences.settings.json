@@ -36,7 +36,8 @@
     },
     "projects": {
       "collection": "projects",
-      "via": "experience"
+      "via": "experiences",
+      "dominant": true
     },
     "type": {
       "default": "Experience",

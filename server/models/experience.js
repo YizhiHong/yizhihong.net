@@ -3,10 +3,14 @@ const Schema = mongoose.Schema
 
 const experienceSchema = new Schema({
     name: String,
-    date: String,
-    Projects: [Schema.ObjectId],
-    decs: String,
+    location: String,
+    title: String,
+    startDate: String,
+    endDate: String,
+    currentWork: Boolean,
+    type: String,
+    projects: [Schema.ObjectId],
     details: Object
 }) 
 
-module.exports = mongoose.model('experience',experienceSchema)
+module.exports = mongoose.model('experiences',experienceSchema)

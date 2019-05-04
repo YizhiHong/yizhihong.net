@@ -136,7 +136,7 @@ input editProjectsInput {
   techniques: [ID]
   details: JSON
   location: String
-  experience: ID
+  experiences: [ID]
 }
 
 input editRoleInput {
@@ -365,7 +365,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Experiences | createExperiencesPayload | updateExperiencesPayload | deleteExperiencesPayload | ExperiencesConnection | ExperiencesAggregator | ExperiencesGroupBy | ExperiencesConnection_id | ExperiencesConnectionId | ExperiencesConnectionCreatedAt | ExperiencesConnectionUpdatedAt | ExperiencesConnectionName | ExperiencesConnectionLocation | ExperiencesConnectionTitle | ExperiencesConnectionStartDate | ExperiencesConnectionEndDate | ExperiencesConnectionCurrentWork | ExperiencesConnectionDetails | ExperiencesConnectionType | Introduction | createIntroductionPayload | updateIntroductionPayload | deleteIntroductionPayload | IntroductionConnection | IntroductionAggregator | IntroductionGroupBy | IntroductionConnection_id | IntroductionConnectionId | IntroductionConnectionCreatedAt | IntroductionConnectionUpdatedAt | IntroductionConnectionIntro | Techniques | createTechniquesPayload | updateTechniquesPayload | deleteTechniquesPayload | TechniquesConnection | TechniquesAggregator | TechniquesGroupBy | TechniquesConnection_id | TechniquesConnectionId | TechniquesConnectionCreatedAt | TechniquesConnectionUpdatedAt | TechniquesConnectionName | TechniquesConnectionImg | Projects | createProjectsPayload | updateProjectsPayload | deleteProjectsPayload | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnection_id | ProjectsConnectionId | ProjectsConnectionCreatedAt | ProjectsConnectionUpdatedAt | ProjectsConnectionName | ProjectsConnectionDecs | ProjectsConnectionLink | ProjectsConnectionDate | ProjectsConnectionDetails | ProjectsConnectionLocation | ProjectsConnectionExperience | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Experiences | createExperiencesPayload | updateExperiencesPayload | deleteExperiencesPayload | ExperiencesConnection | ExperiencesAggregator | ExperiencesGroupBy | ExperiencesConnection_id | ExperiencesConnectionId | ExperiencesConnectionCreatedAt | ExperiencesConnectionUpdatedAt | ExperiencesConnectionName | ExperiencesConnectionLocation | ExperiencesConnectionTitle | ExperiencesConnectionStartDate | ExperiencesConnectionEndDate | ExperiencesConnectionCurrentWork | ExperiencesConnectionDetails | ExperiencesConnectionType | Introduction | createIntroductionPayload | updateIntroductionPayload | deleteIntroductionPayload | IntroductionConnection | IntroductionAggregator | IntroductionGroupBy | IntroductionConnection_id | IntroductionConnectionId | IntroductionConnectionCreatedAt | IntroductionConnectionUpdatedAt | IntroductionConnectionIntro | Techniques | createTechniquesPayload | updateTechniquesPayload | deleteTechniquesPayload | TechniquesConnection | TechniquesAggregator | TechniquesGroupBy | TechniquesConnection_id | TechniquesConnectionId | TechniquesConnectionCreatedAt | TechniquesConnectionUpdatedAt | TechniquesConnectionName | TechniquesConnectionImg | Projects | createProjectsPayload | updateProjectsPayload | deleteProjectsPayload | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnection_id | ProjectsConnectionId | ProjectsConnectionCreatedAt | ProjectsConnectionUpdatedAt | ProjectsConnectionName | ProjectsConnectionDecs | ProjectsConnectionLink | ProjectsConnectionDate | ProjectsConnectionDetails | ProjectsConnectionLocation | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createExperiences(input: createExperiencesInput): createExperiencesPayload
@@ -412,8 +412,8 @@ type Projects {
   date: DateTime
   details: JSON
   location: String
-  experience: Experiences
   techniques(sort: String, limit: Int, start: Int, where: JSON): [Techniques]
+  experiences(sort: String, limit: Int, start: Int, where: JSON): [Experiences]
 }
 
 type ProjectsAggregator {
@@ -449,11 +449,6 @@ type ProjectsConnectionDecs {
 
 type ProjectsConnectionDetails {
   key: JSON
-  connection: ProjectsConnection
-}
-
-type ProjectsConnectionExperience {
-  key: ID
   connection: ProjectsConnection
 }
 
@@ -493,7 +488,6 @@ type ProjectsGroupBy {
   date: [ProjectsConnectionDate]
   details: [ProjectsConnectionDetails]
   location: [ProjectsConnectionLocation]
-  experience: [ProjectsConnectionExperience]
 }
 
 input ProjectsInput {
@@ -504,7 +498,7 @@ input ProjectsInput {
   techniques: [ID]
   details: JSON
   location: String
-  experience: ID
+  experiences: [ID]
 }
 
 type Query {

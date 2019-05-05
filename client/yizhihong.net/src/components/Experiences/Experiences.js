@@ -1,23 +1,19 @@
-import React from 'react'
-import Experience from './Experience/Experience'
+import React from "react";
+import Experience from "./Experience/Experience";
+import Widget from "../UI/Widget/Widget";
+import Classes from "./Experiences.css";
+import { withDateSorter } from "../../hoc/utils";
 
-import Classes from '../Projects/Projects.css'
-import {withDateSorter} from '../../hoc/utils'
-
-const experiences = (props) => {
-    const displayProjects = () => {
-        withDateSorter(props.experiences)
-        return (
-            props.experiences.map((el)=>
-                <Experience key={el.id} data={el}></Experience>)
-        )
-    }
-
-    return (
-        <ul className={Classes.projectList}>
-            {displayProjects()}
-        </ul>
-    )
-}
+const experiences = ({ exp }) => {
+  const displayProjects = () => {
+    withDateSorter(exp);
+    return exp.map(el => (
+      <Widget key={el.id}>
+        <Experience data={el} />
+      </Widget>
+    ));
+  };
+  return <ul className={Classes.experienceList}>{displayProjects()}</ul>;
+};
 
 export default experiences;

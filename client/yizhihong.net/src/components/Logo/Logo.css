@@ -3,11 +3,16 @@
   height: 100%;
   box-sizing: border-box;
   border-radius: 4px;
-  background-image: url("../../assets/img/logox2.png");
-  background-position: -116px -37px;
-  background-size: 220px;
+  background-image: url("../../assets/img/hong.png");
   background-repeat: no-repeat;
-  width: 105px;
+  background-size: 150px;
+  width: 150px;
+  margin-top: 12px;
+}
+
+.logoMobile{
+  background-image: url("../../assets/img/logox2.png");
+  background-size: 220px;
 }
 
 .logo img{

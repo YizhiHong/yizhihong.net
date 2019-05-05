@@ -1,9 +1,11 @@
-.name{
+.block {
 }
-.date{
-    order: 2;
-    margin-left: auto;
+.name {
 }
-.title{
-    display: flex;
+.date {
+  order: 2;
+  margin-left: auto;
+}
+.title {
+  display: flex;
 }

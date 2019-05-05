@@ -5,7 +5,6 @@ import Widget from '../../UI/Widget/Widget'
 
 const project = (props) => {
     let proj = props.proj
-    console.log(proj)
     return (
         <Widget>
             <h4>{proj.name}</h4>

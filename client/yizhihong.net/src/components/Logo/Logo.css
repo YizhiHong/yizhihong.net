@@ -10,18 +10,18 @@
   margin-top: 12px;
 }
 
-.logoMobile{
+.logoMobile {
   background-image: url("../../assets/img/logox2.png");
   background-size: 220px;
 }
 
-.logo img{
+.logo img {
   height: 100%;
 }
 @media (max-width: 500px) {
- .SideLogo {
-  background-position: -0px 8px;
-  background-repeat: no-repeat;
-  width: 110px;
- } 
+  .SideLogo {
+    background-position: -0px 8px;
+    background-repeat: no-repeat;
+    width: 110px;
+  }
 }

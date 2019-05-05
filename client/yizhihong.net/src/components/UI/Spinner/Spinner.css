@@ -19,7 +19,7 @@
 .loader:before,
 .loader:after {
   position: absolute;
-  content: '';
+  content: "";
 }
 .loader:before {
   width: 5.2em;

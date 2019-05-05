@@ -43,10 +43,10 @@ class LinkedIn extends React.Component {
             data-theme="dark"
             data-vanity="chi-hong"
           >
-          <a
-            className="LI-simple-link"
-            href="https://www.linkedin.com/in/chi-hong?trk=profile-badge"
-          />
+            <a
+              className="LI-simple-link"
+              href="https://www.linkedin.com/in/chi-hong?trk=profile-badge"
+            />
           </div>
         ) : (
           <div style={prefixStyle} />

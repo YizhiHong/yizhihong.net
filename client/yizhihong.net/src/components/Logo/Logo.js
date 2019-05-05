@@ -1,13 +1,12 @@
-import React from 'react'
+import React from "react";
 
-import classes from './Logo.css'
+import classes from "./Logo.css";
 
-const logo = (props) => {
-  
-  let styles = props.SideLogo ?
-      [classes.logo,  classes.logoMobile, classes.SideLogo] : [classes.logo]
-  return (<div className={styles.join(" ")}>
-  </div>)
+const logo = props => {
+  let styles = props.SideLogo
+    ? [classes.logo, classes.logoMobile, classes.SideLogo]
+    : [classes.logo];
+  return <div className={styles.join(" ")} />;
 };
 
-export default logo
+export default logo;

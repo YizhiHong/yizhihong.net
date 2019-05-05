@@ -51,9 +51,11 @@ class Profile extends Component {
           <Widget>
             <Intro data={this.state.information} />
           </Widget>
-          {exp.loading ? <Loader size="8px" /> : 
+          {exp.loading ? (
+            <Loader size="8px" />
+          ) : (
             <Experiences exp={exp.allExperiences} />
-          }
+          )}
         </Col>
         <Col xs={6} md={3}>
           <LinkedIn />

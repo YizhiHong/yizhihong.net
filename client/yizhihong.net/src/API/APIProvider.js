@@ -1,9 +1,10 @@
 import React from 'react'
 import ApolloClient from 'apollo-boost'
 import {ApolloProvider} from 'react-apollo'
+import {SERVER} from '../config/config'
 
 const client = new ApolloClient({
-    uri: 'http://localhost:8080/graphql'
+    uri: `${SERVER}graphql`
 })
 
 const APIProvider = (props) =>{

@@ -11,8 +11,23 @@ const withDateSorter = (dateArr) => {
     });
 }
 
+const withDetailsParser = (data, type) => {
+    let obj = JSON.parse(data)
+    // switch(type) {
+    //     case 'Education':
+            
+
+    //     case 'Experience':
+
+    //     default:
+
+    // }
+    return obj
+}
+
 
 export { 
     withTimeParser,
-    withDateSorter
+    withDateSorter,
+    withDetailsParser
 }

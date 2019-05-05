@@ -1,32 +1,23 @@
-import React,{Component}from 'react'
-import {graphql} from 'react-apollo'
-import Project from './Project/Project'
+import React from 'react'
+import Experience from './Experience/Experience'
 
-import Classes from './Projects.css'
-import {allExperiencesQuery} from '../../API/experienceAPI' 
-import Loader from '../UI/Loader/Loader'
+import Classes from '../Projects/Projects.css'
 import {withDateSorter} from '../../hoc/utils'
 
-class Projects extends Component{
-    displayProjects(){
-        if(this.props.data.loading){
-            return <Loader size="5px"></Loader>
-        }else{
-            withDateSorter(this.props.data.allExperiences)
-            return (
-                this.props.data.allExperiences.map((project)=>
-                    <Project key={project.id} proj={project}></Project>)
-            )
-        }
-    }
-
-    render(){
+const experiences = (props) => {
+    const displayProjects = () => {
+        withDateSorter(props.experiences)
         return (
-            <ul className={Classes.projectList}>
-                {this.displayProjects()}
-            </ul>
+            props.experiences.map((el)=>
+                <Experience key={el.id} data={el}></Experience>)
         )
     }
+
+    return (
+        <ul className={Classes.projectList}>
+            {displayProjects()}
+        </ul>
+    )
 }
 
-export default graphql(allExperiencesQuery)(Projects);
+export default experiences;

@@ -80,6 +80,12 @@ const ExperiencesType = new GraphQLObjectType({
             resolve(parent,args){
                 return Project.find({ "_id":  {"$in": parent.projects}})
             }
+        },
+        details: {
+            type: GraphQLString,
+            resolve(parent,arg) {
+                return JSON.stringify(parent.details)
+            }
         }
     })
 })

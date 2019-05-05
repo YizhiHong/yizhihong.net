@@ -4,7 +4,7 @@ import Loader from '../UI/Loader/Loader'
 
 const Index = lazy(() => import('../Pages/Index'))
 const Projects = lazy(() => import('../Pages/Projects'))
-const Contact = lazy(() => import('../Pages/Contact'))
+// const Contact = lazy(() => import('../Pages/Contact'))
 
 const Routers = (props) =>{
     return (

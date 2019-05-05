@@ -1,0 +1,9 @@
+.name{
+}
+.date{
+    order: 2;
+    margin-left: auto;
+}
+.title{
+    display: flex;
+}

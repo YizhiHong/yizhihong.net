@@ -6,8 +6,14 @@ import {Col} from 'react-bootstrap'
 import Widget from '../UI/Widget/Widget'
 import Intro from './Intro/Intro'
 
-import withLogin from '../../hoc/withLogin'
+// import withLogin from '../../hoc/withLogin'
+import {TOKEN,HOST} from '../../config/config'
 import axios from 'axios'
+
+import {graphql} from 'react-apollo'
+import {allExperiencesQuery} from '../../API/experienceAPI' 
+import Experiences from '../Experiences/Experiences';
+import Loader from '../UI/Loader/Loader';
 
 
 class Profile extends Component{
@@ -17,15 +23,15 @@ class Profile extends Component{
     }
 
     componentDidMount(){
-        const uri = this.props.uri
-        const token = this.props.token
+        // const uri = this.props.uri
+        // const token = this.props.token
 
-        this.setState({social: true})
-        if(token){
+        // this.setState({social: true})
+        if(TOKEN){
             axios
-            .get(`${uri}introductions`, {
+            .get(`${HOST}introductions`, {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${TOKEN}`
                 }
             })
             .then(response => {
@@ -37,18 +43,27 @@ class Profile extends Component{
             });
         }
     }
-    shouldComponentUpdate(nextProps, nextState){
-        return true;
+
+    shouldComponentUpdate(){
+        if(this.props.data.loading) return false
+        else return true
     }
+
     render(){
+        let exp = this.props.data
         return (
             <Fragment>
                 <Col xs={12} md={8}>
-                    <Intro intro={this.state.information}/>
+                    <Widget>
+                        <Intro intro={this.state.information}/>
+                    </Widget>
+                    {exp.loading ? <Loader size="8px"></Loader> :
+                        <Experiences experiences={exp.allExperiences}></Experiences>
+                    }
                 </Col>
                 <Col xs={12} md={4}>
                     <Widget>
-                        {this.state.social ? <LinkedIn /> : null}
+                        <LinkedIn />
                     </Widget>
                 </Col>
             </Fragment>
@@ -56,4 +71,4 @@ class Profile extends Component{
     }
 }
 
-export default withLogin(Profile);
+export default graphql(allExperiencesQuery)(Profile);

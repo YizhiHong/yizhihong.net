@@ -4,7 +4,7 @@ import LinkedIn from "../SoicalMedia/LinkedIn";
 import Experiences from "../Experiences/Experiences";
 import Intro from "./Intro/Intro";
 
-import Loader from "../UI/Loader/Loader";
+import Skeleton from "react-loading-skeleton";
 import { Col } from "react-bootstrap";
 import Widget from "../UI/Widget/Widget";
 
@@ -52,7 +52,9 @@ class Profile extends Component {
             <Intro data={this.state.information} />
           </Widget>
           {exp.loading ? (
-            <Loader size="8px" />
+            <Widget>
+              <Skeleton count={10} />
+            </Widget>
           ) : (
             <Experiences exp={exp.allExperiences} />
           )}

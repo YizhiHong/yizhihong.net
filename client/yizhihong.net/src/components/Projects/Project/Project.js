@@ -1,12 +1,11 @@
-import React from "react";
+import React,{Fragment} from "react";
 import Classes from "./Project.css";
 import { withTimeParser } from "../../../hoc/utils";
-import Widget from "../../UI/Widget/Widget";
 
 const project = props => {
   let proj = props.proj;
   return (
-    <Widget>
+    <Fragment>
       <h4>{proj.name}</h4>
       <h5>{withTimeParser(proj.date)}</h5>
       <p>{proj.decs}</p>
@@ -34,7 +33,7 @@ const project = props => {
           {proj.name}
         </a>
       ) : null}
-    </Widget>
+    </Fragment>
   );
 };
 

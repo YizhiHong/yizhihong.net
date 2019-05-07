@@ -20,6 +20,7 @@ const allProjectsQuery = gql`
 const getProjectQuery = gql`
     query($id: ID!){
         project(id:$id){
+            id
             name
             date
             techniques {
@@ -27,6 +28,7 @@ const getProjectQuery = gql`
                 img
             }
             decs
+            details
             link
         }
     }

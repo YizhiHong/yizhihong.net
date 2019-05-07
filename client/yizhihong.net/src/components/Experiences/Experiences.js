@@ -10,6 +10,19 @@ import Skeleton from "react-loading-skeleton";
 
 const experiences = props => {
   let data = props.data;
+
+  const liStyle = {
+    Education: {
+      borderLeft: "5px solid green"
+    },
+    Experience: {
+      borderLeft: "5px solid #8f5c2c"
+    },
+    Other: {
+      borderLeft: "5px solid black"
+    }
+  };
+
   const displayProjects = () => {
     if (data.loading) {
       return (
@@ -21,9 +34,11 @@ const experiences = props => {
       let exp = data.allExperiences;
       withDateSorter(exp);
       return exp.map(el => (
-        <Widget key={el.id}>
-          <Experience data={el} viewProject={props.viewProject} />
-        </Widget>
+        <li key={el.id} style={liStyle[el.type]}>
+          <Widget>
+            <Experience data={el} viewProject={props.viewProject} />
+          </Widget>
+        </li>
       ));
     }
   };

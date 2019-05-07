@@ -1,10 +1,11 @@
 import React, { lazy, Suspense } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Loader from "../UI/Loader/Loader";
 
 const Index = lazy(() => import("../Pages/Index"));
 const Projects = lazy(() => import("../Pages/Projects"));
 // const Contact = lazy(() => import('../Pages/Contact'))
+const Error = lazy(() => import("../Pages/404"));
 
 const Routers = props => {
   return (
@@ -29,6 +30,17 @@ const Routers = props => {
         )}
       />
       {/* <Route path='/Contact' exact component={Projects} /> */}
+
+      <Route
+        path="/404"
+        render={() => (
+          <Suspense fallback={<Loader />}>
+            <Error />
+          </Suspense>
+        )}
+      />
+
+      <Redirect to="/404" />
     </Switch>
   );
 };

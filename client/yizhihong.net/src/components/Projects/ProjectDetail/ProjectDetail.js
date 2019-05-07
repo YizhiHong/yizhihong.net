@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import { getProjectQuery } from "../../../API/projectAPI";
 import Loader from "../../UI/Loader/Loader";
 import Modal from "../../UI/Modal/Modal";
+import Project from "../Project/Project"
 
 class ProjectDetail extends Component {
   componentDidMount() {}
@@ -18,7 +19,7 @@ class ProjectDetail extends Component {
           const project = data.project;
           return (
             <Modal show={this.props.show} modalClosed={this.props.modalClosed}>
-              <div>{project.name}</div>
+              <Project proj={project}></Project>
             </Modal>
           );
         }}

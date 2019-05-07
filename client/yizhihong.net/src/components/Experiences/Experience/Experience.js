@@ -19,7 +19,7 @@ const Info = props => {
       </div>
       <div className={Classes.details}>{details(el.details, el.type)}</div>
       <div>
-        Projects:
+        <span className={Classes.title}>PROJECTS:</span>
         {el.projects.map(proj => (
           <Button
             key={proj.id}
@@ -40,12 +40,12 @@ const details = (data, type) => {
     case "Education":
       const courses = [];
       for (let c of d.Course) {
-        courses.push(<span key={c}>{c}</span>);
+        courses.push(<span key={c}> {c}</span>);
       }
       return (
         <Fragment>
           <span>GPA: {d.GPA}</span>
-          <div>Courses:{courses}</div>
+          <div>Courses: {courses}</div>
         </Fragment>
       );
     case "Experience":

@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "contact",
+  "info": {
+    "name": "contact",
+    "description": "The contact form from our client site"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}

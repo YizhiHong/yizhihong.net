@@ -1,9 +1,10 @@
-import React,{Fragment} from "react";
+import React, { Fragment } from "react";
 import Classes from "./Project.css";
-import { withTimeParser } from "../../../hoc/utils";
+import { withTimeParser, isImage } from "../../../hoc/utils";
 
 const project = props => {
   let proj = props.proj;
+
   return (
     <Fragment>
       <h4>{proj.name}</h4>
@@ -29,10 +30,19 @@ const project = props => {
         })}
       </div>
       {proj.link ? (
-        <a href={proj.link} rel="noopener noreferrer" target="_blank">
-          {proj.name}
-        </a>
-      ) : null}
+        isImage(proj.link) ? (
+          <div className={Classes.qrcode}>
+            <span>Scan Here</span>
+            <img  alt={proj.name} src={proj.link} />
+          </div>
+        ) : (
+          <a href={proj.link} rel="noopener noreferrer" target="_blank">
+            {proj.name}
+          </a>
+        )
+      ) : (
+        <span>Not ready for visitor or Project already closed</span>
+      )}
     </Fragment>
   );
 };

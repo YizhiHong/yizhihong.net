@@ -1,3 +1,92 @@
+"""The contact form from our client site"""
+type Contact {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  email: String
+  name: String
+  content: String
+  date: DateTime
+}
+
+type ContactAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ContactConnection {
+  values: [Contact]
+  groupBy: ContactGroupBy
+  aggregate: ContactAggregator
+}
+
+type ContactConnection_id {
+  key: ID
+  connection: ContactConnection
+}
+
+type ContactConnectionContent {
+  key: String
+  connection: ContactConnection
+}
+
+type ContactConnectionCreatedAt {
+  key: DateTime
+  connection: ContactConnection
+}
+
+type ContactConnectionDate {
+  key: DateTime
+  connection: ContactConnection
+}
+
+type ContactConnectionEmail {
+  key: String
+  connection: ContactConnection
+}
+
+type ContactConnectionId {
+  key: ID
+  connection: ContactConnection
+}
+
+type ContactConnectionName {
+  key: String
+  connection: ContactConnection
+}
+
+type ContactConnectionUpdatedAt {
+  key: DateTime
+  connection: ContactConnection
+}
+
+type ContactGroupBy {
+  _id: [ContactConnection_id]
+  id: [ContactConnectionId]
+  createdAt: [ContactConnectionCreatedAt]
+  updatedAt: [ContactConnectionUpdatedAt]
+  email: [ContactConnectionEmail]
+  name: [ContactConnectionName]
+  content: [ContactConnectionContent]
+  date: [ContactConnectionDate]
+}
+
+input ContactInput {
+  email: String
+  name: String
+  content: String
+  date: DateTime
+}
+
+input createContactInput {
+  data: ContactInput
+}
+
+type createContactPayload {
+  contact: Contact
+}
+
 input createExperiencesInput {
   data: ExperiencesInput
 }
@@ -51,6 +140,14 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteContactInput {
+  where: InputID
+}
+
+type deleteContactPayload {
+  contact: Contact
+}
+
 input deleteExperiencesInput {
   where: InputID
 }
@@ -97,6 +194,13 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editContactInput {
+  email: String
+  name: String
+  content: String
+  date: DateTime
 }
 
 input editExperiencesInput {
@@ -170,6 +274,7 @@ enum ENUM_EXPERIENCES_TYPE {
   Others
 }
 
+"""My Experiences"""
 type Experiences {
   _id: ID!
   id: ID!
@@ -365,9 +470,12 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Experiences | createExperiencesPayload | updateExperiencesPayload | deleteExperiencesPayload | ExperiencesConnection | ExperiencesAggregator | ExperiencesGroupBy | ExperiencesConnection_id | ExperiencesConnectionId | ExperiencesConnectionCreatedAt | ExperiencesConnectionUpdatedAt | ExperiencesConnectionName | ExperiencesConnectionLocation | ExperiencesConnectionTitle | ExperiencesConnectionStartDate | ExperiencesConnectionEndDate | ExperiencesConnectionCurrentWork | ExperiencesConnectionDetails | ExperiencesConnectionType | Introduction | createIntroductionPayload | updateIntroductionPayload | deleteIntroductionPayload | IntroductionConnection | IntroductionAggregator | IntroductionGroupBy | IntroductionConnection_id | IntroductionConnectionId | IntroductionConnectionCreatedAt | IntroductionConnectionUpdatedAt | IntroductionConnectionIntro | Techniques | createTechniquesPayload | updateTechniquesPayload | deleteTechniquesPayload | TechniquesConnection | TechniquesAggregator | TechniquesGroupBy | TechniquesConnection_id | TechniquesConnectionId | TechniquesConnectionCreatedAt | TechniquesConnectionUpdatedAt | TechniquesConnectionName | TechniquesConnectionImg | Projects | createProjectsPayload | updateProjectsPayload | deleteProjectsPayload | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnection_id | ProjectsConnectionId | ProjectsConnectionCreatedAt | ProjectsConnectionUpdatedAt | ProjectsConnectionName | ProjectsConnectionDecs | ProjectsConnectionLink | ProjectsConnectionDate | ProjectsConnectionDetails | ProjectsConnectionLocation | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Contact | createContactPayload | updateContactPayload | deleteContactPayload | ContactConnection | ContactAggregator | ContactGroupBy | ContactConnection_id | ContactConnectionId | ContactConnectionCreatedAt | ContactConnectionUpdatedAt | ContactConnectionEmail | ContactConnectionName | ContactConnectionContent | ContactConnectionDate | Experiences | createExperiencesPayload | updateExperiencesPayload | deleteExperiencesPayload | ExperiencesConnection | ExperiencesAggregator | ExperiencesGroupBy | ExperiencesConnection_id | ExperiencesConnectionId | ExperiencesConnectionCreatedAt | ExperiencesConnectionUpdatedAt | ExperiencesConnectionName | ExperiencesConnectionLocation | ExperiencesConnectionTitle | ExperiencesConnectionStartDate | ExperiencesConnectionEndDate | ExperiencesConnectionCurrentWork | ExperiencesConnectionDetails | ExperiencesConnectionType | Introduction | createIntroductionPayload | updateIntroductionPayload | deleteIntroductionPayload | IntroductionConnection | IntroductionAggregator | IntroductionGroupBy | IntroductionConnection_id | IntroductionConnectionId | IntroductionConnectionCreatedAt | IntroductionConnectionUpdatedAt | IntroductionConnectionIntro | Techniques | createTechniquesPayload | updateTechniquesPayload | deleteTechniquesPayload | TechniquesConnection | TechniquesAggregator | TechniquesGroupBy | TechniquesConnection_id | TechniquesConnectionId | TechniquesConnectionCreatedAt | TechniquesConnectionUpdatedAt | TechniquesConnectionName | TechniquesConnectionImg | Projects | createProjectsPayload | updateProjectsPayload | deleteProjectsPayload | ProjectsConnection | ProjectsAggregator | ProjectsGroupBy | ProjectsConnection_id | ProjectsConnectionId | ProjectsConnectionCreatedAt | ProjectsConnectionUpdatedAt | ProjectsConnectionName | ProjectsConnectionDecs | ProjectsConnectionLink | ProjectsConnectionDate | ProjectsConnectionDetails | ProjectsConnectionLocation | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createContact(input: createContactInput): createContactPayload
+  updateContact(input: updateContactInput): updateContactPayload
+  deleteContact(input: deleteContactInput): deleteContactPayload
   createExperiences(input: createExperiencesInput): createExperiencesPayload
   updateExperiences(input: updateExperiencesInput): updateExperiencesPayload
   deleteExperiences(input: deleteExperiencesInput): deleteExperiencesPayload
@@ -502,6 +610,9 @@ input ProjectsInput {
 }
 
 type Query {
+  contact(id: ID!): Contact
+  contacts(sort: String, limit: Int, start: Int, where: JSON): [Contact]
+  contactsConnection(sort: String, limit: Int, start: Int, where: JSON): ContactConnection
   experience(id: ID!): Experiences
   experiences(sort: String, limit: Int, start: Int, where: JSON): [Experiences]
   experiencesConnection(sort: String, limit: Int, start: Int, where: JSON): ExperiencesConnection
@@ -601,6 +712,15 @@ input TechniquesInput {
   name: String
   img: String
   projs: [ID]
+}
+
+input updateContactInput {
+  where: InputID
+  data: editContactInput
+}
+
+type updateContactPayload {
+  contact: Contact
 }
 
 input updateExperiencesInput {

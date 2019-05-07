@@ -9,9 +9,15 @@ const withDateSorter = dateArr => {
   });
 };
 
+const isImage = url => {
+  let len = url.length;
+  if (url.substring(len - 3, len) === "png") return true
+  return false
+};
+
 const withDetailsParser = (data, type) => {
   let obj = JSON.parse(data);
   return obj;
 };
 
-export { withTimeParser, withDateSorter, withDetailsParser };
+export { withTimeParser, withDateSorter, withDetailsParser, isImage };

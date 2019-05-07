@@ -1,11 +1,20 @@
+ul{
+  padding: 10px 20px;
+}
 .block {
 }
 .name {
 }
-.date {
+.button{
+  padding: 5px;
+  background-color: darkgray important!;
+}
+.titleBlock {
+  display: flex;
+}
+
+.date,
+.location {
   order: 2;
   margin-left: auto;
-}
-.title {
-  display: flex;
 }

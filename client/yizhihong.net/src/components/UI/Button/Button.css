@@ -1,24 +1,54 @@
 .Button {
-  background-color: transparent;
-  border: none;
-  color: white;
-  outline: none;
+  position: relative;
+  display: inline-block;
+  padding: 0.5em;
+  text-decoration: none;
+  text-align: center;
   cursor: pointer;
-  font: inherit;
-  padding: 10px;
-  margin: 10px;
-  font-weight: bold;
+  user-select: none;
+  color: white;
+  border: 0;
+  transition: 0.4s;
+  margin: 5px 10px;
+}
+.Button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(135deg, #6e6e6e, #2f2f2f);
+  border-radius: 4px;
+  transition: box-shadow 0.5s ease, transform 0.2s ease,
+    background-color 0.5s ease;
+  will-change: transform;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0))
+    rotateY(var(--ry, 0)) translateZ(var(--tz, -12px));
 }
 
-.Button:first-of-type {
-  margin-left: 0;
-  padding-left: 0;
+.Button:hover::before {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  background-color: linear-gradient(275deg, #6e6e6e, #2f2f2f);
+}
+
+.Button::after {
+  position: relative;
+  display: inline-block;
+  content: attr(data-title);
+  transition: transform 0.2s ease;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  will-change: transform;
+  transform: translateY(var(--ty, 0)) rotateX(var(--rx, 0))
+    rotateY(var(--ry, 0));
 }
 
 .Success {
-  color: #5c9210;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
 }
 
-.Danger {
-  color: #944317;
+.Success:hover::before {
+  background: linear-gradient(0deg, #6e8efb, #a777e3);
 }

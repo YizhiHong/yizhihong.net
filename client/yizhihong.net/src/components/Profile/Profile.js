@@ -1,23 +1,23 @@
 import React, { Component, Fragment } from "react";
 
-import LinkedIn from "../SoicalMedia/LinkedIn";
+// import LinkedIn from "../SoicalMedia/LinkedIn";
 import Experiences from "../Experiences/Experiences";
 import Intro from "./Intro/Intro";
 
-import Skeleton from "react-loading-skeleton";
 import { Col } from "react-bootstrap";
 import Widget from "../UI/Widget/Widget";
 
 // import withLogin from '../../hoc/withLogin'
 import { TOKEN, HOST } from "../../config/config";
 import axios from "axios";
-import { graphql } from "react-apollo";
-import { allExperiencesQuery } from "../../API/experienceAPI";
+import ProjectDetail from "../Projects/ProjectDetail/ProjectDetail";
 
 class Profile extends Component {
   state = {
     social: false,
-    information: null
+    information: null,
+    viewProject: false,
+    projectID: null
   };
 
   componentDidMount() {
@@ -38,33 +38,42 @@ class Profile extends Component {
     }
   }
 
-  shouldComponentUpdate() {
-    if (this.props.data.loading) return false;
-    else return true;
-  }
+  setProject = id => {
+    this.setState({ viewProject: true, projectID: id });
+  };
+
+  closeProejct = () => {
+    this.setState({
+      viewProject: false,
+      projectID: null
+    });
+  };
 
   render() {
-    let exp = this.props.data;
     return (
       <Fragment>
         <Col xs={12} md={9}>
           <Widget>
             <Intro data={this.state.information} />
           </Widget>
-          {exp.loading ? (
-            <Widget>
-              <Skeleton count={10} />
-            </Widget>
-          ) : (
-            <Experiences exp={exp.allExperiences} />
-          )}
+          <Experiences
+            viewProject={this.setProject}
+            closeProejct={this.closeProejct}
+          />
         </Col>
         <Col xs={6} md={3}>
-          <LinkedIn />
+          {/* <LinkedIn /> */}
         </Col>
+        {this.state.viewProject ? (
+          <ProjectDetail
+            id={this.state.projectID}
+            show = {this.state.viewProject}
+            modalClosed={this.closeProejct}
+          />
+        ) : null}
       </Fragment>
     );
   }
 }
 
-export default graphql(allExperiencesQuery)(Profile);
+export default Profile;

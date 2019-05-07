@@ -1,5 +1,5 @@
 const withTimeParser = time => {
-  let times = time.split(" ");
+  const times = time.split(" ");
   return times[1] + " " + times[3];
 };
 
@@ -11,14 +11,6 @@ const withDateSorter = dateArr => {
 
 const withDetailsParser = (data, type) => {
   let obj = JSON.parse(data);
-  // switch(type) {
-  //     case 'Education':
-
-  //     case 'Experience':
-
-  //     default:
-
-  // }
   return obj;
 };
 

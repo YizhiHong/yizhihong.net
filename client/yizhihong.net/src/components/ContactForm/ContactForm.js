@@ -1,15 +1,20 @@
 import React, { Fragment, Component } from "react";
 import Form from "../UI/Form/Form";
 import Classes from "./ContactForm.css";
-import { Input } from "../UI/Form/FormItem/FormItem";
+import { Input, Textarea } from "../UI/Form/FormItem/FormItem";
 import { EMAIL_REGEX } from "../../config/config";
 import { validateName, validateRegex } from "../../hoc/utils";
 
+const ERROR_MESSAGE = {
+  name: "Your name is too long or too short.",
+  email: "Please provide the correct email.",
+  msg: "The message can't be empty or too long."
+};
+
 const validation = e => ({
-  name: validateName(e.name) ? false : "Your name is too long or too short!",
-  email: validateRegex(EMAIL_REGEX, e.email)
-    ? false
-    : "Email format is not right"
+  name: validateName(e.name) ? false : ERROR_MESSAGE.name,
+  email: validateRegex(EMAIL_REGEX, e.email) ? false : ERROR_MESSAGE.email,
+  msg: e.msg.length !== 0 || e.msg.length > 10000 ? false : ERROR_MESSAGE.msg
 });
 
 class contactForm extends Component {
@@ -18,23 +23,13 @@ class contactForm extends Component {
     this.state = { errors: { name: false } };
   }
   validate = e => {
+    // asys validation
     this.setState(({ errors }) => ({
       errors: {
-        ...errors,
-        name: true
+        ...errors
       }
     }));
   };
-
-  // validateEmail = e => {
-  //   console.log(e.target)
-  //   this.setState(({ errors }) => ({
-  //     errors: {
-  //       ...errors,
-  //       email: validateRegex(EMAIL_REGEX, e.target.value)
-  //     }
-  //   }))
-  // }
 
   update = data => {
     // here to post/mutate data
@@ -51,7 +46,7 @@ class contactForm extends Component {
                 active: false,
                 name: "",
                 email: "",
-                content: ""
+                msg: ""
               },
               submitted: false,
               changedFields: {}
@@ -65,7 +60,7 @@ class contactForm extends Component {
             }}
             onSubmit={data => this.update(data)}
             asyncErrors={this.state.errors}
-            validateEmail={this.validateEmail}
+            asyncValidate={this.validate}
             render={({
               form,
               onChange,
@@ -74,26 +69,23 @@ class contactForm extends Component {
               onSubmit,
               updateState
             }) => {
-              const { values, changedFields, submitted } = form;
+              const { values, changedFields } = form;
               const errors = validation(values);
-              const hasErrors = errors.name || errors.email;
-              // const showErrors = submitted && hasErrors;
+              const hasErrors = errors.name || errors.email || errors.msg;
 
               return (
                 <form onSubmit={e => e.preventDefault()}>
-                  <br />
                   <Input
-                    label="name"
+                    label="Name"
                     name="name"
                     type="text"
                     value={values.name}
                     onChange={onChange}
                     error={changedFields.name && errors.name}
                   />
-
                   <br />
                   <Input
-                    label="email"
+                    label="Email"
                     name="email"
                     type="email"
                     value={values.email}
@@ -101,20 +93,25 @@ class contactForm extends Component {
                     error={changedFields.email && errors.email}
                   />
                   <br />
+                  <Textarea
+                    label="Message"
+                    name="msg"
+                    type="text"
+                    value={values.msg}
+                    onChange={onChange}
+                    error={changedFields.msg && errors.msg}
+                  />
                   <br />
-                  <div>
-                    Form has been Submitted already ? {submitted ? "Yes" : "No"}
-                  </div>
-                  <button
+                  <br />
+                  <input
+                    type="button"
                     onClick={() => {
                       updateState(state => ({ ...state, submitted: true }));
                       onSubmit(values);
                     }}
                     disabled={hasErrors}
-                  >
-                    Submit
-                  </button>
-                  <br />
+                    value="submit"
+                  />
                 </form>
               );
             }}

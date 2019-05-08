@@ -1,13 +1,30 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 const errorStyle = { color: "red" };
 
 const Input = ({ label, error, onChange, name, value }) => (
-  <label>
-    {label}:
-    <input name={name} type="text" value={value} placeholder={name} onChange={onChange} />
+  <Fragment>
+    <input
+      name={name}
+      type="text"
+      value={value}
+      placeholder={label}
+      onChange={onChange}
+    />
     {error && <span style={errorStyle}>{error}</span>}
-  </label>
+  </Fragment>
+);
+
+const Textarea = ({ label, error, onChange, name, value }) => (
+  <Fragment>
+    <textarea
+      name={name}
+      value={value}
+      placeholder={label}
+      onChange={onChange}
+    />
+    {error && <span style={errorStyle}>{error}</span>}
+  </Fragment>
 );
 
 const CheckBox = ({ label, error, onChange, name, value }) => (
@@ -18,4 +35,4 @@ const CheckBox = ({ label, error, onChange, name, value }) => (
   </label>
 );
 
-export { Input, CheckBox };
+export { Input, CheckBox, Textarea };

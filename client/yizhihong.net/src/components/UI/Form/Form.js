@@ -32,7 +32,6 @@ class Form extends Component {
   };
 
   render() {
-    console.log(this.state)
     return this.props.render({
       ...this.props,
       form: this.state,

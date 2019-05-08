@@ -4,4 +4,8 @@ const TOKEN = process.env.REACT_APP_TOKEN;
 const HOST = process.env.REACT_APP_HOST;
 const SERVER = process.env.REACT_APP_SERVER;
 
-export { USER, PASSWORD, TOKEN, HOST, SERVER };
+const EMAIL_REGEX =
+  "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$";
+const PASSWORD_REGEX = "^[0-9A-Za-z]{6,}$";
+
+export { USER, PASSWORD, TOKEN, HOST, SERVER, EMAIL_REGEX, PASSWORD_REGEX };

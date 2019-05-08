@@ -45,6 +45,7 @@
   .NavigationItem a.active {
     background-color: #8f5c2c;
     text-decoration: none;
+    list-style: none;
     /* border-bottom: 4px solid #313336; */
     color: white;
     transition: 350ms;

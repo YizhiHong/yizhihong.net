@@ -11,8 +11,8 @@ const withDateSorter = dateArr => {
 
 const isImage = url => {
   let len = url.length;
-  if (url.substring(len - 3, len) === "png") return true
-  return false
+  if (url.substring(len - 3, len) === "png") return true;
+  return false;
 };
 
 const withDetailsParser = (data, type) => {
@@ -20,4 +20,21 @@ const withDetailsParser = (data, type) => {
   return obj;
 };
 
-export { withTimeParser, withDateSorter, withDetailsParser, isImage };
+const validateRegex = (regex, s) => {
+  const re = new RegExp(regex)
+  return re.test(s)
+};
+
+const validateName = name => {
+  if(name.trim().length > 30 || name.trim().length === 0) return false
+  return true
+};
+
+export {
+  withTimeParser,
+  withDateSorter,
+  withDetailsParser,
+  isImage,
+  validateRegex,
+  validateName
+};

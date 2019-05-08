@@ -4,7 +4,7 @@ import Loader from "../UI/Loader/Loader";
 
 const Index = lazy(() => import("../Pages/Index"));
 const Projects = lazy(() => import("../Pages/Projects"));
-// const Contact = lazy(() => import('../Pages/Contact'))
+const Contact = lazy(() => import("../Pages/Contact"));
 const Error = lazy(() => import("../Pages/404"));
 
 const Routers = props => {
@@ -29,8 +29,15 @@ const Routers = props => {
           </Suspense>
         )}
       />
-      {/* <Route path='/Contact' exact component={Projects} /> */}
-
+      <Route
+        path="/contact"
+        exact
+        render={() => (
+          <Suspense fallback={<Loader />}>
+            <Contact />
+          </Suspense>
+        )}
+      />
       <Route
         path="/404"
         render={() => (

@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from "./NavItems.css";
 import NavItem from "./NavItem/NavItem";
+import Github from "../../SoicalMedia/Github";
 
 const NavItems = props => {
   return (
@@ -11,6 +12,7 @@ const NavItems = props => {
           {e.name}
         </NavItem>
       ))}
+      <Github></Github>
     </ul>
   );
 };

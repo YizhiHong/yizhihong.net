@@ -1,0 +1,76 @@
+.Contactform {
+  font-family: "Open Sans Condensed", arial, sans;
+  max-width: 600px;
+  padding: 30px;
+  background: #ffffff;
+  margin: 20px auto;
+  box-shadow: 0px 2px 3px #d6d6d6;
+  -moz-box-shadow: 0px 2px 3px #d6d6d6;
+  -webkit-box-shadow: 0px 2px 3px #d6d6d6;
+}
+.Contactform h2 {
+  background: #313336;
+  text-transform: uppercase;
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 100;
+  padding: 20px;
+  margin: -30px -30px 30px -30px;
+}
+.Contactform input[type="text"],
+.Contactform input[type="date"],
+.Contactform input[type="datetime"],
+.Contactform input[type="email"],
+.Contactform input[type="number"],
+.Contactform input[type="search"],
+.Contactform input[type="time"],
+.Contactform input[type="url"],
+.Contactform input[type="password"],
+.Contactform textarea,
+.Contactform select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font: 16px Arial, Helvetica, sans-serif;
+  height: 45px;
+}
+.Contactform textarea {
+  resize: none;
+  overflow: hidden;
+}
+.Contactform input[type="button"],
+.Contactform input[type="submit"] {
+  -moz-box-shadow: inset 0px 1px 0px 0px #8f5c2c;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #8f5c2c;
+  box-shadow: inset 0px 1px 0px 0px #8f5c2c;
+  background-color: #8f5c2c;
+  border: 1px solid #8f5c2c;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 14px;
+  padding: 8px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.Contactform input[type="button"]:hover,
+.Contactform input[type="submit"]:hover {
+  background: linear-gradient(to bottom, #8f5c2c 5%, #8f5c2c 100%);
+  background-color: #8f5c2c;
+}
+.Contactform input[type="button"]:active,
+.Contactform input[type="button"]:focus {
+  outline: 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  background-color: linear-gradient(275deg, #6e6e6e, #8f5c2c);
+}

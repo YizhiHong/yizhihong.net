@@ -1,7 +1,15 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
+import ContactForm from "../ContactForm/ContactForm";
 
-const Contact = props => {
-  return <div />;
+const contact = props => {
+  return (
+    <Container>
+      <Row>
+        <ContactForm />
+      </Row>
+    </Container>
+  );
 };
 
-export default Contact;
+export default contact;

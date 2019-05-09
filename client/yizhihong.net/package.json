@@ -50,6 +50,7 @@
     "react-dom": "^16.8.1",
     "react-load-script": "0.0.6",
     "react-loading-skeleton": "^1.1.1",
+    "react-recaptcha": "^2.3.10",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^1.1.4",
     "resolve": "1.10.0",
@@ -57,7 +58,7 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.2",
     "url-loader": "1.1.2",
-    "webpack": "4.28.3",
+    "webpack": "^4.28.3",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"

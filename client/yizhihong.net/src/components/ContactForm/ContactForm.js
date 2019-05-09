@@ -6,11 +6,13 @@ import { postContact } from "../../API/contactAPI";
 import { Input, Textarea, Message } from "../UI/Form/FormItem/FormItem";
 import { EMAIL_REGEX } from "../../config/config";
 import { validateName, validateRegex } from "../../hoc/utils";
+import Recaptcha from "react-recaptcha";
 
 const ERROR_MESSAGE = {
   name: "Your name is too long or too short.",
   email: "Please provide the correct email.",
-  msg: "The message can't be empty or too long."
+  msg: "The message can't be empty or too long.",
+  isVerify: "Google say you are a robot."
 };
 
 const MESSAGE = {
@@ -20,16 +22,21 @@ const MESSAGE = {
 const validation = e => ({
   name: validateName(e.name) ? false : ERROR_MESSAGE.name,
   email: validateRegex(EMAIL_REGEX, e.email) ? false : ERROR_MESSAGE.email,
-  msg: e.msg.length !== 0 || e.msg.length > 10000 ? false : ERROR_MESSAGE.msg
+  msg: e.msg.length !== 0 || e.msg.length > 10000 ? false : ERROR_MESSAGE.msg,
+  isVerify: e.isVerify ? false : ERROR_MESSAGE.isVerify
 });
 
 class contactForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { errors: { name: false }, errorMsg: null, submitted: false };
+    this.state = {
+      errors: { name: false },
+      errorMsg: null,
+      submitted: false
+    };
   }
+  // asys validation
   validate = e => {
-    // asys validation
     this.setState(({ errors }) => ({
       errors: {
         ...errors
@@ -37,8 +44,8 @@ class contactForm extends Component {
     }));
   };
 
+  // here to post/mutate data
   update = (data, handleReset) => {
-    // here to post/mutate data
     let payload = {
       email: data.email,
       name: data.name,
@@ -55,15 +62,16 @@ class contactForm extends Component {
         handleReset();
       })
       .catch(error => {
-        console.log("An error occurred:", error);
+        console.log(error);
         this.setState({
-          errorMsg: error,
+          errorMsg: String(error),
           submitted: false
         });
       });
   };
 
   render() {
+    const { submitted, errorMsg } = this.state;
     return (
       <Fragment>
         <div className={Classes.Contactform}>
@@ -74,7 +82,8 @@ class contactForm extends Component {
                 active: false,
                 name: "",
                 email: "",
-                msg: ""
+                msg: "",
+                isVerify: false
               },
               submitted: false,
               changedFields: {}
@@ -89,6 +98,7 @@ class contactForm extends Component {
             onSubmit={(data, resetfn) => this.update(data, resetfn)}
             asyncErrors={this.state.errorMsg}
             asyncValidate={this.validate}
+            onloadCallback={this.recaptchaOnload}
             render={({
               form,
               onChange,
@@ -96,11 +106,14 @@ class contactForm extends Component {
               asyncValidate,
               onSubmit,
               updateState,
-              handleReset
+              handleReset,
+              onloadCallback
             }) => {
               const { values, changedFields } = form;
               const errors = validation(values);
-              const hasErrors = errors.name || errors.email || errors.msg;
+
+              const hasErrors =
+                errors.name || errors.email || errors.msg || errors.isVerify;
 
               return (
                 <form onSubmit={e => e.preventDefault()}>
@@ -131,6 +144,20 @@ class contactForm extends Component {
                     error={changedFields.msg && errors.msg}
                   />
                   <br />
+                  <Recaptcha
+                    sitekey="6LcWU6IUAAAAAF7dUe847Vkm-wUWJvjoof1MEI9s"
+                    render="explicit"
+                    verifyCallback={response => {
+                      if (response)
+                        updateState(state => ({
+                          ...state,
+                          values: { ...state.values, isVerify: true }
+                        }));
+                    }}
+                    onloadCallback={() => {
+                      console.log("reacptcha loaded!!");
+                    }}
+                  />
                   <br />
                   <input
                     type="button"
@@ -147,8 +174,8 @@ class contactForm extends Component {
             }}
           />
         </div>
-        {this.state.errorMsg !== null ? (
-          <Message error={!this.state.submitted} msg={this.state.errorMsg} />
+        {errorMsg !== null ? (
+          <Message error={!submitted} msg={errorMsg} />
         ) : null}
       </Fragment>
     );

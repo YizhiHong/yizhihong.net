@@ -31,13 +31,20 @@ class Form extends Component {
     this.setState(state => fn(state));
   };
 
+  handleReset = () => {
+    this.setState({
+      ...this.props.intitialState
+    });
+  };
+
   render() {
     return this.props.render({
       ...this.props,
       form: this.state,
       onChange: this.onChange,
       udpate: this.update,
-      updateState: this.updateState
+      updateState: this.updateState,
+      handleReset: this.handleReset
     });
   }
 }

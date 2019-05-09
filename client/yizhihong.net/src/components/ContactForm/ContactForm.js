@@ -1,7 +1,9 @@
 import React, { Fragment, Component } from "react";
+
 import Form from "../UI/Form/Form";
 import Classes from "./ContactForm.css";
-import { Input, Textarea } from "../UI/Form/FormItem/FormItem";
+import { postContact } from "../../API/contactAPI";
+import { Input, Textarea, Message } from "../UI/Form/FormItem/FormItem";
 import { EMAIL_REGEX } from "../../config/config";
 import { validateName, validateRegex } from "../../hoc/utils";
 
@@ -9,6 +11,10 @@ const ERROR_MESSAGE = {
   name: "Your name is too long or too short.",
   email: "Please provide the correct email.",
   msg: "The message can't be empty or too long."
+};
+
+const MESSAGE = {
+  success: "Thanks for reach me out! I hear your voice now!"
 };
 
 const validation = e => ({
@@ -20,7 +26,7 @@ const validation = e => ({
 class contactForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { errors: { name: false } };
+    this.state = { errors: { name: false }, errorMsg: null, submitted: false };
   }
   validate = e => {
     // asys validation
@@ -31,10 +37,32 @@ class contactForm extends Component {
     }));
   };
 
-  update = data => {
+  update = (data, handleReset) => {
     // here to post/mutate data
-    console.log(data);
+    let payload = {
+      email: data.email,
+      name: data.name,
+      content: data.msg,
+      date: new Date()
+    };
+    postContact(payload)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          errorMsg: MESSAGE.success,
+          submitted: true
+        });
+        handleReset();
+      })
+      .catch(error => {
+        console.log("An error occurred:", error);
+        this.setState({
+          errorMsg: error,
+          submitted: false
+        });
+      });
   };
+
   render() {
     return (
       <Fragment>
@@ -58,8 +86,8 @@ class contactForm extends Component {
                 changedFields: { ...state.changedFields, [name]: true }
               };
             }}
-            onSubmit={data => this.update(data)}
-            asyncErrors={this.state.errors}
+            onSubmit={(data, resetfn) => this.update(data, resetfn)}
+            asyncErrors={this.state.errorMsg}
             asyncValidate={this.validate}
             render={({
               form,
@@ -67,7 +95,8 @@ class contactForm extends Component {
               asyncErrors,
               asyncValidate,
               onSubmit,
-              updateState
+              updateState,
+              handleReset
             }) => {
               const { values, changedFields } = form;
               const errors = validation(values);
@@ -107,16 +136,20 @@ class contactForm extends Component {
                     type="button"
                     onClick={() => {
                       updateState(state => ({ ...state, submitted: true }));
-                      onSubmit(values);
+                      onSubmit(values, handleReset);
                     }}
                     disabled={hasErrors}
                     value="submit"
                   />
+                  <br />
                 </form>
               );
             }}
           />
         </div>
+        {this.state.errorMsg !== null ? (
+          <Message error={!this.state.submitted} msg={this.state.errorMsg} />
+        ) : null}
       </Fragment>
     );
   }

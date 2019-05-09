@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 const errorStyle = { color: "red" };
+// const succeedStyle = { color: "green" };
 
 const Input = ({ label, error, onChange, name, value }) => (
   <Fragment>
@@ -35,4 +36,22 @@ const CheckBox = ({ label, error, onChange, name, value }) => (
   </label>
 );
 
-export { Input, CheckBox, Textarea };
+const MsgStyle = {
+  succeed: {
+    fontSize: "16px",
+    color: "green",
+    textAlign: "center"
+  },
+  error: {
+    fontSize: "16px",
+    color: "red",
+    textAlign: "center"
+  }
+};
+
+const Message = ({ error, msg }) => {
+  if (error) return <div style={MsgStyle.error}>{msg}</div>;
+  return <div style={MsgStyle.succeed}>{msg}</div>;
+};
+
+export { Input, CheckBox, Textarea, Message };

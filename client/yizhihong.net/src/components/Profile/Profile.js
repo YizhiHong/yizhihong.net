@@ -8,8 +8,7 @@ import { Col } from "react-bootstrap";
 import Widget from "../UI/Widget/Widget";
 
 // import withLogin from '../../hoc/withLogin'
-import { TOKEN, HOST } from "../../config/config";
-import axios from "axios";
+import {informationAPI} from "../../API/informationAPI"
 import ProjectDetail from "../Projects/ProjectDetail/ProjectDetail";
 
 class Profile extends Component {
@@ -21,13 +20,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    if (TOKEN) {
-      axios
-        .get(`${HOST}introductions`, {
-          headers: {
-            Authorization: `Bearer ${TOKEN}`
-          }
-        })
+      informationAPI()
         .then(response => {
           this.setState({ information: response.data[0].intro });
         })
@@ -35,7 +28,6 @@ class Profile extends Component {
           // Handle error.
           console.log("An error occurred:", error);
         });
-    }
   }
 
   setProject = id => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Layout from './components/Layout/Layout';
-import Routers from './components/Routers/Routers';
+import Routers from './Routers/Routers';
 import APIProvider from './API/APIProvider';
 
 class App extends Component {

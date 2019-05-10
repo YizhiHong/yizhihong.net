@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Loader from "../UI/Loader/Loader";
+import Loader from "../components/UI/Loader/Loader";
 
 const Index = lazy(() => import("../Pages/Index"));
 const Projects = lazy(() => import("../Pages/Projects"));

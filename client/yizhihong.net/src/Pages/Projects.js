@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
-import Projects from "../Projects/Projects";
+import Projects from "../components/Projects/Projects";
 
 const ProjectPage = () => {
   return (

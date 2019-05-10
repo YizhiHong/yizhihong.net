@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import Profile from "../Profile/Profile";
+import Profile from "../components/Profile/Profile";
 
 const Index = props => {
   return (

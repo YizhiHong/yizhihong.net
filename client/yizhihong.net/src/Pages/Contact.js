@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import ContactForm from "../ContactForm/ContactForm";
-import ScriptLoader from "../../hoc/ScriptLoader"
+import ContactForm from "../components/ContactForm/ContactForm";
+import ScriptLoader from "../hoc/ScriptLoader"
 
 const scripts = [
   {

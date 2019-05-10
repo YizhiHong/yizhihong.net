@@ -59,7 +59,6 @@ class contactForm extends Component {
           errorMsg: MESSAGE.success,
           submitted: true
         });
-        handleReset();
       })
       .catch(error => {
         console.log(error);
@@ -68,10 +67,12 @@ class contactForm extends Component {
           submitted: false
         });
       });
+    handleReset();
   };
 
   render() {
     const { submitted, errorMsg } = this.state;
+
     return (
       <Fragment>
         <div className={Classes.Contactform}>
@@ -111,7 +112,7 @@ class contactForm extends Component {
             }) => {
               const { values, changedFields } = form;
               const errors = validation(values);
-
+              let recaptchaInstance;
               const hasErrors =
                 errors.name || errors.email || errors.msg || errors.isVerify;
 
@@ -147,6 +148,7 @@ class contactForm extends Component {
                   <Recaptcha
                     sitekey="6LcWU6IUAAAAAF7dUe847Vkm-wUWJvjoof1MEI9s"
                     render="explicit"
+                    ref={e => (recaptchaInstance = e)}
                     verifyCallback={response => {
                       if (response)
                         updateState(state => ({
@@ -164,6 +166,7 @@ class contactForm extends Component {
                     onClick={() => {
                       updateState(state => ({ ...state, submitted: true }));
                       onSubmit(values, handleReset);
+                      recaptchaInstance.reset();
                     }}
                     disabled={hasErrors}
                     value="submit"

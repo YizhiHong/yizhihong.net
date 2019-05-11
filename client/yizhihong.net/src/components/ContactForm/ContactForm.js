@@ -4,21 +4,10 @@ import Form from "../UI/Form/Form";
 import Classes from "./ContactForm.css";
 import { postContact } from "../../API/contactAPI";
 import { Input, Textarea, Message } from "../UI/Form/FormItem/FormItem";
-import { EMAIL_REGEX } from "../../config/config";
-import { validateName, validateRegex } from "../../hoc/utils";
+import { EMAIL_REGEX, RECAPTCHA_KEY } from "../../config/config";
+import { validateName, validateRegex, CONTACT_ERROR_MESSAGE as ERROR_MESSAGE, CONTACT_MESSAGE as MESSAGE } from "../../hoc/utils";
 import Loader from "../UI/Loader/Loader";
 import Recaptcha from "react-recaptcha";
-
-const ERROR_MESSAGE = {
-  name: "Your name is too long or too short.",
-  email: "Please provide the correct email.",
-  msg: "The message can't be empty or too long.",
-  isVerify: "Google say you are a robot."
-};
-
-const MESSAGE = {
-  success: "Thanks for reach me out! I hear your voice now!"
-};
 
 const validation = e => ({
   name: validateName(e.name) ? false : ERROR_MESSAGE.name,
@@ -154,7 +143,7 @@ class contactForm extends Component {
                   />
                   <br />
                   <Recaptcha
-                    sitekey="6LcWU6IUAAAAAF7dUe847Vkm-wUWJvjoof1MEI9s"
+                    sitekey={RECAPTCHA_KEY}
                     render="explicit"
                     ref={e => (recaptchaInstance = e)}
                     verifyCallback={response => {

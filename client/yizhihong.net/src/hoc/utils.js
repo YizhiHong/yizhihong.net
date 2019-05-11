@@ -30,11 +30,23 @@ const validateName = name => {
   return true
 };
 
+const CONTACT_ERROR_MESSAGE = {
+  name: "Your name is too long or too short.",
+  email: "Please provide the correct email.",
+  msg: "The message can't be empty or too long.",
+  isVerify: "Google say you are a robot."
+};
+
+const CONTACT_MESSAGE = {
+  success: "Thanks for reach me out! I hear your voice now!"
+};
 export {
   withTimeParser,
   withDateSorter,
   withDetailsParser,
   isImage,
   validateRegex,
-  validateName
+  validateName,
+  CONTACT_ERROR_MESSAGE,
+  CONTACT_MESSAGE
 };

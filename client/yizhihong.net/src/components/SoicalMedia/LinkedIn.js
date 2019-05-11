@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 
 class LinkedIn extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class LinkedIn extends React.Component {
       margin: "0 Auto"
     };
     return (
-      <React.Fragment>
+      <Fragment>
         {this.state.loaded ? (
           <div
             className="LI-profile-badge"
@@ -53,7 +53,7 @@ class LinkedIn extends React.Component {
         ) : (
           <div style={prefixStyle} />
         )}
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

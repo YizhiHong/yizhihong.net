@@ -1,9 +1,6 @@
 ul{
   padding: 10px 20px;
-}
-.block {
-}
-.name {
+  list-style: square;
 }
 .button{
   padding: 5px;
@@ -12,7 +9,12 @@ ul{
 .titleBlock {
   display: flex;
 }
-
+.EducationDetail{
+  margin: 10px 0;
+}
+.details{
+  margin-left: 8px;
+}
 .date,
 .location {
   order: 2;

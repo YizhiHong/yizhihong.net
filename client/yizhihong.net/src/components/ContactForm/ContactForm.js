@@ -57,7 +57,7 @@ class contactForm extends Component {
           submitted: true
         });
         handleReset();
-        this.reset(6000)
+        this.reset(6000);
       })
       .catch(error => {
         this.setState({
@@ -65,25 +65,22 @@ class contactForm extends Component {
           submitted: false
         });
         handleReset();
-        this.reset(6000)
+        this.reset(6000);
       });
   };
-  
+
   // clear the alert state
-  reset(time){
+  reset(time) {
     setTimeout(() => {
       this.setState({
         error: false,
         submitted: false
-      })
-    }, time) 
+      });
+    }, time);
   }
 
   render() {
-    const { error,submitted } = this.state;
-    console.log('====================================');
-    console.log(error,submitted );
-    console.log('====================================');
+    const { error, submitted } = this.state;
     return (
       <Fragment>
         <div className={Classes.Contactform}>
@@ -188,11 +185,7 @@ class contactForm extends Component {
               );
             }}
           />
-          {error === false ? null : { submitted } ? (
-            <Message error={false} msg={error} />
-          ) : (
-            <Message error={true} msg={error} />
-          )}
+          {error === false ? null : <Message error={!submitted} msg={error} />}
         </div>
       </Fragment>
     );

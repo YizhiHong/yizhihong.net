@@ -8,8 +8,7 @@ const button = props => {
       id={props.id}
       className={[classes.Button, classes[props.btnType]].join(" ")}
       onClick={props.clicked}
-      data-title={props.children}
-    />
+    >{props.children}</button>
   );
 };
 

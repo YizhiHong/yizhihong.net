@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from "react";
 
-// import LinkedIn from "../SoicalMedia/LinkedIn";
+import LinkedIn from "../SoicalMedia/LinkedIn";
 import Experiences from "../Experiences/Experiences";
 import Intro from "./Intro/Intro";
 
 import { Col } from "react-bootstrap";
 import Widget from "../UI/Widget/Widget";
 
-// import withLogin from '../../hoc/withLogin'
 import {informationAPI} from "../../API/informationAPI"
 import ProjectDetail from "../Projects/ProjectDetail/ProjectDetail";
 
@@ -53,8 +52,8 @@ class Profile extends Component {
             closeProejct={this.closeProejct}
           />
         </Col>
-        <Col xs={6} md={3}>
-          {/* <LinkedIn /> */}
+        <Col xs={6} md={3} style={{position:'sticky', top: '72px'}}>
+          <LinkedIn />
         </Col>
         {this.state.viewProject ? (
           <ProjectDetail

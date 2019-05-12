@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import SideDrawer from "../Navbar/SideDrawer/SideDrawer";
 import { BrowserRouter } from "react-router-dom";
 import ScriptLoader from "../../hoc/ScriptLoader";
+import {clearLocalStorage} from "../../hoc/utils"
 
 const scripts = [
   {
@@ -33,6 +34,9 @@ class Layout extends Component {
     this.setState(prevState => ({ showSideDrawer: !prevState.showSideDrawer }));
   };
 
+  componentWillMount = () => {
+    clearLocalStorage()
+  }
   render() {
     return (
       <BrowserRouter>

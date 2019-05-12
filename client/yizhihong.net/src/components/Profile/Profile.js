@@ -19,14 +19,17 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    let greeding = localStorage.getItem("greeding");
+    let greeding = localStorage.getItem("CUSTOM_GREEDING");
+    
     if (greeding) {
       this.setState({ information: greeding });
     } else {
       informationAPI()
         .then(response => {
-          this.setState({ information: response.data[0].intro });
-          localStorage.setItem("greeding", response.data[0].intro);
+          let res = response.data[0].intro;
+          this.setState({ information: res });
+
+          localStorage.setItem("CUSTOM_GREEDING", res);
         })
         .catch(error => {
           // Handle error.
@@ -47,7 +50,7 @@ class Profile extends Component {
   };
 
   render() {
-    let greeding = localStorage.getItem("greeding");
+    let greeding = localStorage.getItem("CUSTOM_GREEDING");
     return (
       <Fragment>
         <Col xs={12} md={9}>

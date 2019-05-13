@@ -20,7 +20,7 @@ class Profile extends Component {
 
   componentDidMount() {
     let greeding = localStorage.getItem("CUSTOM_GREEDING");
-    
+
     if (greeding) {
       this.setState({ information: greeding });
     } else {

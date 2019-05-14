@@ -154,7 +154,7 @@ class contactForm extends Component {
                         }));
                     }}
                     onloadCallback={() => {
-                      console.log("reacptcha loaded!!");
+                      // console.log("reacptcha loaded!!");
                     }}
                   />
                   <br />

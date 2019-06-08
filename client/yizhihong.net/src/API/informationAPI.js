@@ -1,11 +1,12 @@
 import axios from "axios";
-import { TOKEN, HOST } from "../config/config";
+import { HOST } from "../config/config";
 
-const informationAPI = () => {
+const informationAPI = (TOKEN) => {
   return axios.get(`${HOST}introductions`, {
     headers: {
       Authorization: `Bearer ${TOKEN}`
     }
   })
 };
+
 export { informationAPI };

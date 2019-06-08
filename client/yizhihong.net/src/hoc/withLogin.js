@@ -25,9 +25,9 @@ const withLogin = WrappedComponent => {
         })
         .then(response => {
           // Handle success.
-          console.log("Well done!");
+          // console.log("Well done!");
           // console.log('User profile', response.data.user);
-          console.log('User token', response.data.jwt);
+          // console.log('User token', response.data.jwt);
           this.setState({
             token: response.data.jwt
           });

@@ -66,7 +66,7 @@ class Profile extends Component {
             closeProejct={this.closeProejct}
           />
         </Col>
-        <Col xs={6} md={3} style={{ position: "sticky", top: "72px" }}>
+        <Col xs={6} md={3} style={{ position: "fixed", top: "72px" }}>
           <LinkedIn />
         </Col>
         {this.state.viewProject ? (

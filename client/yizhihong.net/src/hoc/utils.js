@@ -9,7 +9,11 @@ const withTimeParser = time => {
   const times = time.split(" ");
   return times[1] + " " + times[3];
 };
-
+/**
+ * 
+ * @param {String} dateArr 
+ * @return {String}
+ */
 const withDateSorter = dateArr => {
   dateArr.sort(function(a, b) {
     return new Date(b.date) - new Date(a.date);

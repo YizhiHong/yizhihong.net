@@ -1,0 +1,9 @@
+.content {
+  display: "flex";
+}
+.main {
+  flex: "70%";
+}
+.side {
+  flex: "30%";
+}

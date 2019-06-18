@@ -16,7 +16,7 @@ const withTimeParser = time => {
  */
 const withDateSorter = dateArr => {
   dateArr.sort(function(a, b) {
-    return new Date(b.date) - new Date(a.date);
+    return new Date(b.startDate) - new Date(a.startDate);
   });
 };
 

@@ -39,7 +39,7 @@ const Info = props => {
           {el.title}
         </h5>
         <h5 className={Classes.date}>
-          {withTimeParser(el.startDate)} - {withTimeParser(el.endDate)}
+          {withTimeParser(el.startDate)} - {el.currentWork ? 'PRESENT' : withTimeParser(el.endDate)}
           <Icons size="14px" name="date">
             <MdDateRange />
           </Icons>
@@ -47,9 +47,10 @@ const Info = props => {
       </div>
       <div className={Classes.details}>{details(el.details, el.type)}</div>
       <div>
-        <Icons size="34px" name="projects">
+        {el.projects.length > 0 ? <Icons size="34px" name="projects">
           <MdFormatListBulleted />
-        </Icons>
+        </Icons> : null
+        }
         {el.projects.map(proj => (
           <Button
             key={proj.id}

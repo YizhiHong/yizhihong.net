@@ -10,8 +10,8 @@ const withTimeParser = time => {
   return times[1] + " " + times[3];
 };
 /**
- * 
- * @param {String} dateArr 
+ *
+ * @param {String} dateArr
  * @return {String}
  */
 const withDateSorter = dateArr => {

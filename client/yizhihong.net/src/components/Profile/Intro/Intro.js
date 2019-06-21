@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import classes from "./Intro.css";
 import Skeleton from "react-loading-skeleton";
 import TypeEffect from "../../UI/Effect/TypeEffect/TypeEffect";

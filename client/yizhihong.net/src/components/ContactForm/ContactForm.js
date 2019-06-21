@@ -5,10 +5,15 @@ import Classes from "./ContactForm.css";
 import { postContact } from "../../API/contactAPI";
 import { Input, Textarea, Message } from "../UI/Form/FormItem/FormItem";
 import { EMAIL_REGEX, RECAPTCHA_KEY } from "../../config/config";
-import { validateName, validateRegex, CONTACT_ERROR_MESSAGE as ERROR_MESSAGE, CONTACT_MESSAGE as MESSAGE } from "../../hoc/utils";
+import {
+  validateName,
+  validateRegex,
+  CONTACT_ERROR_MESSAGE as ERROR_MESSAGE,
+  CONTACT_MESSAGE as MESSAGE
+} from "../../hoc/utils";
 import Loader from "../UI/Loader/Loader";
 import Recaptcha from "react-recaptcha";
-import withLogin from "../../hoc/withLogin"
+import withLogin from "../../hoc/withLogin";
 
 const validation = e => ({
   name: validateName(e.name) ? false : ERROR_MESSAGE.name,

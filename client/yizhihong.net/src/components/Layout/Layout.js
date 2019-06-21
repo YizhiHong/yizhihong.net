@@ -6,7 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import SideDrawer from "../Navbar/SideDrawer/SideDrawer";
 import { BrowserRouter } from "react-router-dom";
 import ScriptLoader from "../../hoc/ScriptLoader";
-import {clearLocalStorage} from "../../hoc/utils"
+import { clearLocalStorage } from "../../hoc/utils";
 
 const scripts = [
   {
@@ -35,8 +35,8 @@ class Layout extends Component {
   };
 
   componentWillMount = () => {
-    clearLocalStorage()
-  }
+    clearLocalStorage();
+  };
   render() {
     return (
       <BrowserRouter>

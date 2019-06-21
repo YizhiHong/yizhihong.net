@@ -1,18 +1,18 @@
-ul{
+ul {
   padding: 10px 20px;
   list-style: square;
 }
-.button{
+.button {
   padding: 5px;
   background-color: darkgray important!;
 }
 .titleBlock {
   display: flex;
 }
-.EducationDetail{
+.EducationDetail {
   margin: 10px 0;
 }
-.details{
+.details {
   margin-left: 8px;
 }
 .date,

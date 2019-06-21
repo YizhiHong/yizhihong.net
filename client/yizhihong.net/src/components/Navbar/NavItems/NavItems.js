@@ -12,7 +12,7 @@ const NavItems = props => {
           {e.name}
         </NavItem>
       ))}
-      <Github></Github>
+      <Github />
     </ul>
   );
 };

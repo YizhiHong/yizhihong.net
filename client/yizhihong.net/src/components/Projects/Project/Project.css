@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   margin: 10px 0px;
 }
-.qrcode img{
+.qrcode img {
   max-width: 80px;
 }
 /* .qrcode{
@@ -21,6 +21,6 @@
   top: -120px;
   text-align: center;
 } */
-.qrcode img{
+.qrcode img {
   max-width: 100px;
 }

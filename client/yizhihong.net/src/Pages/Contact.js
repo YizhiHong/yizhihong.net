@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import ContactForm from "../components/ContactForm/ContactForm";
-import ScriptLoader from "../hoc/ScriptLoader"
+import ScriptLoader from "../hoc/ScriptLoader";
 
 const scripts = [
   {
     type: "javascript",
     url: "https://www.google.com/recaptcha/api.js"
   }
-]
+];
 
 const contact = props => {
   return (
@@ -20,4 +20,4 @@ const contact = props => {
   );
 };
 
-export default ScriptLoader(contact,scripts);
+export default ScriptLoader(contact, scripts);

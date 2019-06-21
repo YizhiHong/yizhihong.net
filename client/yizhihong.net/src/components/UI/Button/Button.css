@@ -20,7 +20,7 @@
     rotateY(var(--ry, 0)) translateZ(var(--tz, -12px));
 }
 
-.Button:hover{
+.Button:hover {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
   background-color: linear-gradient(275deg, #6e6e6e, #2f2f2f);
 }

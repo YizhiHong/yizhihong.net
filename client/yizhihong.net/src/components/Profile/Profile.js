@@ -4,7 +4,7 @@ import LinkedIn from "../SoicalMedia/LinkedIn";
 import Experiences from "../Experiences/Experiences";
 import Intro from "./Intro/Intro";
 
-import withLogin from "../../hoc/withLogin"
+import withLogin from "../../hoc/withLogin";
 import { Col } from "react-bootstrap";
 import Widget from "../UI/Widget/Widget";
 

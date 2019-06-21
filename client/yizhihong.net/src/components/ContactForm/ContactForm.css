@@ -77,7 +77,7 @@
   background-color: linear-gradient(275deg, #6e6e6e, #8f5c2c);
 }
 
-.Contactform input[type="button"]:disabled{
+.Contactform input[type="button"]:disabled {
   background-color: #6e6e6e;
   border: 1px solid #6e6e6e;
   pointer-events: none;

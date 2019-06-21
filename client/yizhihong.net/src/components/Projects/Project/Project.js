@@ -4,10 +4,12 @@ import { withTimeParser, isImage } from "../../../hoc/utils";
 
 const project = props => {
   let proj = props.proj;
-  let image = proj.link && isImage(proj.link) ? 
-  <div className={Classes.qrcode}>
-    <img alt={proj.name} src={proj.link} />
-  </div> : null
+  let image =
+    proj.link && isImage(proj.link) ? (
+      <div className={Classes.qrcode}>
+        <img alt={proj.name} src={proj.link} />
+      </div>
+    ) : null;
 
   return (
     <Fragment>

@@ -4,12 +4,13 @@ import LinkedIn from "../SoicalMedia/LinkedIn";
 import Experiences from "../Experiences/Experiences";
 import Intro from "./Intro/Intro";
 
-import withLogin from "../../hoc/withLogin";
+// import withLogin from "../../hoc/withLogin";
 import { Col } from "react-bootstrap";
 import Widget from "../UI/Widget/Widget";
 
 import { informationAPI } from "../../API/informationAPI";
 import ProjectDetail from "../Projects/ProjectDetail/ProjectDetail";
+import { getToken } from "../../hoc/utils";
 
 class Profile extends Component {
   state = {
@@ -25,7 +26,7 @@ class Profile extends Component {
     if (greeding) {
       this.setState({ information: greeding });
     } else {
-      informationAPI(this.props.token)
+      informationAPI(getToken())
         .then(response => {
           let res = response.data[0].intro;
           this.setState({ information: res });
@@ -81,4 +82,4 @@ class Profile extends Component {
   }
 }
 
-export default withLogin(Profile);
+export default Profile;

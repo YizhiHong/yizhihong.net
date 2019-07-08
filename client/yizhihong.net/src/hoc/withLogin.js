@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { HOST, USER, PASSWORD } from "../config/config";
 import Loader from "../components/UI/Loader/Loader";
+import { setToken } from "./utils";
 
 /**
  * @param {Object} WrappedComponent
@@ -31,6 +32,7 @@ const withLogin = WrappedComponent => {
           this.setState({
             token: response.data.jwt
           });
+          setToken(response.data.jwt)
         })
         .catch(error => {
           // Handle error.

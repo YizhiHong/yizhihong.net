@@ -3,6 +3,7 @@ import "./App.css";
 import Layout from "./components/Layout/Layout";
 import Routers from "./Routers/Routers";
 import APIProvider from "./API/APIProvider";
+import withLogin from "./hoc/withLogin";
 
 class App extends Component {
   render() {
@@ -18,4 +19,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withLogin(App);

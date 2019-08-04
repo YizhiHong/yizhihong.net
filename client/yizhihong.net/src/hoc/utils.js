@@ -5,6 +5,14 @@ const clearLocalStorage = () => {
   });
 };
 
+const setToken = token => {
+  return localStorage.setItem("TOKEN", token);
+};
+
+const getToken = () => {
+  return localStorage.getItem("TOKEN");
+};
+
 const withTimeParser = time => {
   const times = time.split(" ");
   return times[1] + " " + times[3];
@@ -53,6 +61,8 @@ const CONTACT_MESSAGE = {
 };
 export {
   clearLocalStorage,
+  setToken,
+  getToken,
   withTimeParser,
   withDateSorter,
   withDetailsParser,

@@ -9,11 +9,11 @@ import {
   validateName,
   validateRegex,
   CONTACT_ERROR_MESSAGE as ERROR_MESSAGE,
-  CONTACT_MESSAGE as MESSAGE
+  CONTACT_MESSAGE as MESSAGE,
+  getToken
 } from "../../hoc/utils";
 import Loader from "../UI/Loader/Loader";
 import Recaptcha from "react-recaptcha";
-import withLogin from "../../hoc/withLogin";
 
 const validation = e => ({
   name: validateName(e.name) ? false : ERROR_MESSAGE.name,
@@ -45,7 +45,7 @@ class contactForm extends Component {
       content: data.msg,
       date: new Date()
     };
-    postContact(payload, this.props.token)
+    postContact(payload, getToken())
       .then(response => {
         this.setState({
           error: MESSAGE.success,
@@ -187,4 +187,4 @@ class contactForm extends Component {
   }
 }
 
-export default withLogin(contactForm);
+export default contactForm;

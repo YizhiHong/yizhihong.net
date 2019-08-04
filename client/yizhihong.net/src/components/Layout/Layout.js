@@ -1,24 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import classes from "./Layout.css";
+import classes from './Layout.css';
 
-import Navbar from "../Navbar/Navbar";
-import SideDrawer from "../Navbar/SideDrawer/SideDrawer";
-import { BrowserRouter } from "react-router-dom";
-import ScriptLoader from "../../hoc/ScriptLoader";
-import { clearLocalStorage } from "../../hoc/utils";
+import Navbar from '../Navbar/Navbar';
+import SideDrawer from '../Navbar/SideDrawer/SideDrawer';
+import DrawerToggle from "../Navbar/SideDrawer/DrawerToggle/DrawerToggle";
+import { BrowserRouter } from 'react-router-dom';
+import ScriptLoader from '../../hoc/ScriptLoader';
+import { clearLocalStorage } from '../../hoc/utils';
 
 const scripts = [
   {
-    type: "CSS",
-    url: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    type: 'CSS',
+    url: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
   }
 ];
 
 const Menu = [
-  { name: "PROFILE", link: "/" },
-  { name: "PROJECTS", link: "/projects" },
-  { name: "CONTACT", link: "/contact" }
+  { name: 'PROFILE', link: '/' },
+  { name: 'PROJECTS', link: '/projects' },
+  { name: 'CONTACT', link: '/contact' }
 ];
 
 class Layout extends Component {
@@ -40,7 +41,9 @@ class Layout extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Navbar menu={Menu} clicked={this.toggleSideDrawer} />
+        <Navbar menu={Menu}>
+          <DrawerToggle clicked={this.toggleSideDrawer}>menu</DrawerToggle>
+        </Navbar>
         <SideDrawer
           menu={Menu}
           closed={this.sideDrawerCloseHandler}

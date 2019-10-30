@@ -16,7 +16,7 @@
     "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
     "mongodb": "^3.2.2",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "pug": "~2.0.0-beta6",
